@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductsApi
+ * PricesApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use LomiSDK\HeaderSelector;
 use LomiSDK\ObjectSerializer;
 
 /**
- * ProductsApi Class Doc Comment
+ * PricesApi Class Doc Comment
  *
  * @category Class
  * @package  LomiSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ProductsApi
+class PricesApi
 {
     /**
      * @var ClientInterface
@@ -75,19 +75,19 @@ class ProductsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createProduct' => [
+        'createPrice' => [
             'application/json',
         ],
-        'deleteProduct' => [
+        'deletePrice' => [
             'application/json',
         ],
-        'listProducts' => [
+        'listPrices' => [
             'application/json',
         ],
-        'retrieveProduct' => [
+        'retrievePrice' => [
             'application/json',
         ],
-        'updateProduct' => [
+        'updatePrice' => [
             'application/json',
         ],
     ];
@@ -139,38 +139,38 @@ class ProductsApi
     }
 
     /**
-     * Operation createProduct
+     * Operation createPrice
      *
-     * Create product
+     * Create price
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\PricesCreate $prices_create prices_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function createProduct($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createPrice($prices_create, string $contentType = self::contentTypes['createPrice'][0])
     {
-        list($response) = $this->createProductWithHttpInfo($products_create, $contentType);
+        list($response) = $this->createPriceWithHttpInfo($prices_create, $contentType);
         return $response;
     }
 
     /**
-     * Operation createProductWithHttpInfo
+     * Operation createPriceWithHttpInfo
      *
-     * Create product
+     * Create price
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\PricesCreate $prices_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProductWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createPriceWithHttpInfo($prices_create, string $contentType = self::contentTypes['createPrice'][0])
     {
-        $request = $this->createProductRequest($products_create, $contentType);
+        $request = $this->createPriceRequest($prices_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +198,7 @@ class ProductsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $request,
                         $response,
                     );
@@ -238,7 +238,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Prices',
                 $request,
                 $response,
             );
@@ -247,7 +247,7 @@ class ProductsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,19 +284,19 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsync
+     * Operation createPriceAsync
      *
-     * Create product
+     * Create price
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\PricesCreate $prices_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsync($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createPriceAsync($prices_create, string $contentType = self::contentTypes['createPrice'][0])
     {
-        return $this->createProductAsyncWithHttpInfo($products_create, $contentType)
+        return $this->createPriceAsyncWithHttpInfo($prices_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -305,20 +305,20 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsyncWithHttpInfo
+     * Operation createPriceAsyncWithHttpInfo
      *
-     * Create product
+     * Create price
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\PricesCreate $prices_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsyncWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createPriceAsyncWithHttpInfo($prices_create, string $contentType = self::contentTypes['createPrice'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->createProductRequest($products_create, $contentType);
+        $returnType = '\LomiSDK\Model\Prices';
+        $request = $this->createPriceRequest($prices_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,26 +357,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'createProduct'
+     * Create request for operation 'createPrice'
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\PricesCreate $prices_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProductRequest($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createPriceRequest($prices_create, string $contentType = self::contentTypes['createPrice'][0])
     {
 
-        // verify the required parameter 'products_create' is set
-        if ($products_create === null || (is_array($products_create) && count($products_create) === 0)) {
+        // verify the required parameter 'prices_create' is set
+        if ($prices_create === null || (is_array($prices_create) && count($prices_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_create when calling createProduct'
+                'Missing the required parameter $prices_create when calling createPrice'
             );
         }
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/prices';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,12 +394,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_create)) {
+        if (isset($prices_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($prices_create));
             } else {
-                $httpBody = $products_create;
+                $httpBody = $prices_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -453,37 +453,37 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProduct
+     * Operation deletePrice
      *
-     * Delete product
+     * Delete price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteProduct($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deletePrice($price_id, string $contentType = self::contentTypes['deletePrice'][0])
     {
-        $this->deleteProductWithHttpInfo($product_id, $contentType);
+        $this->deletePriceWithHttpInfo($price_id, $contentType);
     }
 
     /**
-     * Operation deleteProductWithHttpInfo
+     * Operation deletePriceWithHttpInfo
      *
-     * Delete product
+     * Delete price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteProductWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deletePriceWithHttpInfo($price_id, string $contentType = self::contentTypes['deletePrice'][0])
     {
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deletePriceRequest($price_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -543,19 +543,19 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsync
+     * Operation deletePriceAsync
      *
-     * Delete product
+     * Delete price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsync($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deletePriceAsync($price_id, string $contentType = self::contentTypes['deletePrice'][0])
     {
-        return $this->deleteProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->deletePriceAsyncWithHttpInfo($price_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -564,20 +564,20 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsyncWithHttpInfo
+     * Operation deletePriceAsyncWithHttpInfo
      *
-     * Delete product
+     * Delete price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deletePriceAsyncWithHttpInfo($price_id, string $contentType = self::contentTypes['deletePrice'][0])
     {
         $returnType = '';
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deletePriceRequest($price_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -603,26 +603,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'deleteProduct'
+     * Create request for operation 'deletePrice'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteProductRequest($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deletePriceRequest($price_id, string $contentType = self::contentTypes['deletePrice'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'price_id' is set
+        if ($price_id === null || (is_array($price_id) && count($price_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling deleteProduct'
+                'Missing the required parameter $price_id when calling deletePrice'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/prices/{price_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -632,10 +632,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($price_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'price_id' . '}',
+                ObjectSerializer::toPathValue($price_id),
                 $resourcePath
             );
         }
@@ -700,42 +700,42 @@ class ProductsApi
     }
 
     /**
-     * Operation listProducts
+     * Operation listPrices
      *
-     * List products
+     * List prices
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPrices'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\ListPrices200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function listProducts($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listPrices($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPrices'][0])
     {
-        list($response) = $this->listProductsWithHttpInfo($limit, $offset, $sort, $contentType);
+        list($response) = $this->listPricesWithHttpInfo($limit, $offset, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation listProductsWithHttpInfo
+     * Operation listPricesWithHttpInfo
      *
-     * List products
+     * List prices
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPrices'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\ListPrices200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProductsWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listPricesWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPrices'][0])
     {
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $request = $this->listPricesRequest($limit, $offset, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -763,7 +763,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListPrices200Response',
                         $request,
                         $response,
                     );
@@ -797,7 +797,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\ListProducts200Response',
+                '\LomiSDK\Model\ListPrices200Response',
                 $request,
                 $response,
             );
@@ -806,7 +806,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListPrices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -835,21 +835,21 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsync
+     * Operation listPricesAsync
      *
-     * List products
+     * List prices
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPrices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listPricesAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPrices'][0])
     {
-        return $this->listProductsAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
+        return $this->listPricesAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -858,22 +858,22 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsyncWithHttpInfo
+     * Operation listPricesAsyncWithHttpInfo
      *
-     * List products
+     * List prices
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPrices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listPricesAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPrices'][0])
     {
-        $returnType = '\LomiSDK\Model\ListProducts200Response';
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $returnType = '\LomiSDK\Model\ListPrices200Response';
+        $request = $this->listPricesRequest($limit, $offset, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -912,33 +912,33 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'listProducts'
+     * Create request for operation 'listPrices'
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPrices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listProductsRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listPricesRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPrices'][0])
     {
 
         if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling PricesApi.listPrices, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling PricesApi.listPrices, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.listProducts, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling PricesApi.listPrices, must be bigger than or equal to 0.');
         }
         
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/prices';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1035,38 +1035,38 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProduct
+     * Operation retrievePrice
      *
-     * Retrieve product
+     * Retrieve price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function retrieveProduct($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrievePrice($price_id, string $contentType = self::contentTypes['retrievePrice'][0])
     {
-        list($response) = $this->retrieveProductWithHttpInfo($product_id, $contentType);
+        list($response) = $this->retrievePriceWithHttpInfo($price_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation retrieveProductWithHttpInfo
+     * Operation retrievePriceWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrieveProductWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrievePriceWithHttpInfo($price_id, string $contentType = self::contentTypes['retrievePrice'][0])
     {
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $request = $this->retrievePriceRequest($price_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1094,7 +1094,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $request,
                         $response,
                     );
@@ -1134,7 +1134,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Prices',
                 $request,
                 $response,
             );
@@ -1143,7 +1143,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1180,19 +1180,19 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsync
+     * Operation retrievePriceAsync
      *
-     * Retrieve product
+     * Retrieve price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsync($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrievePriceAsync($price_id, string $contentType = self::contentTypes['retrievePrice'][0])
     {
-        return $this->retrieveProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->retrievePriceAsyncWithHttpInfo($price_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1201,20 +1201,20 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsyncWithHttpInfo
+     * Operation retrievePriceAsyncWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrievePriceAsyncWithHttpInfo($price_id, string $contentType = self::contentTypes['retrievePrice'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $returnType = '\LomiSDK\Model\Prices';
+        $request = $this->retrievePriceRequest($price_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1253,26 +1253,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'retrieveProduct'
+     * Create request for operation 'retrievePrice'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retrieveProductRequest($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrievePriceRequest($price_id, string $contentType = self::contentTypes['retrievePrice'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'price_id' is set
+        if ($price_id === null || (is_array($price_id) && count($price_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling retrieveProduct'
+                'Missing the required parameter $price_id when calling retrievePrice'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/prices/{price_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1282,10 +1282,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($price_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'price_id' . '}',
+                ObjectSerializer::toPathValue($price_id),
                 $resourcePath
             );
         }
@@ -1350,40 +1350,40 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProduct
+     * Operation updatePrice
      *
-     * Update product
+     * Update price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  \LomiSDK\Model\PricesUpdate $prices_update prices_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function updateProduct($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updatePrice($price_id, $prices_update, string $contentType = self::contentTypes['updatePrice'][0])
     {
-        list($response) = $this->updateProductWithHttpInfo($product_id, $products_update, $contentType);
+        list($response) = $this->updatePriceWithHttpInfo($price_id, $prices_update, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateProductWithHttpInfo
+     * Operation updatePriceWithHttpInfo
      *
-     * Update product
+     * Update price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  \LomiSDK\Model\PricesUpdate $prices_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePrice'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Prices|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updatePriceWithHttpInfo($price_id, $prices_update, string $contentType = self::contentTypes['updatePrice'][0])
     {
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $request = $this->updatePriceRequest($price_id, $prices_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1411,7 +1411,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $request,
                         $response,
                     );
@@ -1457,7 +1457,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Prices',
                 $request,
                 $response,
             );
@@ -1466,7 +1466,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Prices',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,20 +1511,20 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsync
+     * Operation updatePriceAsync
      *
-     * Update product
+     * Update price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  \LomiSDK\Model\PricesUpdate $prices_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsync($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updatePriceAsync($price_id, $prices_update, string $contentType = self::contentTypes['updatePrice'][0])
     {
-        return $this->updateProductAsyncWithHttpInfo($product_id, $products_update, $contentType)
+        return $this->updatePriceAsyncWithHttpInfo($price_id, $prices_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1533,21 +1533,21 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsyncWithHttpInfo
+     * Operation updatePriceAsyncWithHttpInfo
      *
-     * Update product
+     * Update price
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  \LomiSDK\Model\PricesUpdate $prices_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsyncWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updatePriceAsyncWithHttpInfo($price_id, $prices_update, string $contentType = self::contentTypes['updatePrice'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $returnType = '\LomiSDK\Model\Prices';
+        $request = $this->updatePriceRequest($price_id, $prices_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1586,34 +1586,34 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'updateProduct'
+     * Create request for operation 'updatePrice'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $price_id Unique identifier for the price (required)
+     * @param  \LomiSDK\Model\PricesUpdate $prices_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePrice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateProductRequest($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updatePriceRequest($price_id, $prices_update, string $contentType = self::contentTypes['updatePrice'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'price_id' is set
+        if ($price_id === null || (is_array($price_id) && count($price_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling updateProduct'
+                'Missing the required parameter $price_id when calling updatePrice'
             );
         }
 
-        // verify the required parameter 'products_update' is set
-        if ($products_update === null || (is_array($products_update) && count($products_update) === 0)) {
+        // verify the required parameter 'prices_update' is set
+        if ($prices_update === null || (is_array($prices_update) && count($prices_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_update when calling updateProduct'
+                'Missing the required parameter $prices_update when calling updatePrice'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/prices/{price_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1623,10 +1623,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($price_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'price_id' . '}',
+                ObjectSerializer::toPathValue($price_id),
                 $resourcePath
             );
         }
@@ -1639,12 +1639,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_update)) {
+        if (isset($prices_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($prices_update));
             } else {
-                $httpBody = $products_update;
+                $httpBody = $prices_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductsApi
+ * SPIQRCodesApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use LomiSDK\HeaderSelector;
 use LomiSDK\ObjectSerializer;
 
 /**
- * ProductsApi Class Doc Comment
+ * SPIQRCodesApi Class Doc Comment
  *
  * @category Class
  * @package  LomiSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ProductsApi
+class SPIQRCodesApi
 {
     /**
      * @var ClientInterface
@@ -75,19 +75,19 @@ class ProductsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createProduct' => [
+        'createSpiQrCode' => [
             'application/json',
         ],
-        'deleteProduct' => [
+        'deleteSpiQrCode' => [
             'application/json',
         ],
-        'listProducts' => [
+        'listSpiQrCodes' => [
             'application/json',
         ],
-        'retrieveProduct' => [
+        'retrieveSpiQrCode' => [
             'application/json',
         ],
-        'updateProduct' => [
+        'updateSpiQrCode' => [
             'application/json',
         ],
     ];
@@ -139,38 +139,38 @@ class ProductsApi
     }
 
     /**
-     * Operation createProduct
+     * Operation createSpiQrCode
      *
-     * Create product
+     * Create spi qr code
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\SpiQrCodesCreate $spi_qr_codes_create spi_qr_codes_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function createProduct($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createSpiQrCode($spi_qr_codes_create, string $contentType = self::contentTypes['createSpiQrCode'][0])
     {
-        list($response) = $this->createProductWithHttpInfo($products_create, $contentType);
+        list($response) = $this->createSpiQrCodeWithHttpInfo($spi_qr_codes_create, $contentType);
         return $response;
     }
 
     /**
-     * Operation createProductWithHttpInfo
+     * Operation createSpiQrCodeWithHttpInfo
      *
-     * Create product
+     * Create spi qr code
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\SpiQrCodesCreate $spi_qr_codes_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProductWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createSpiQrCodeWithHttpInfo($spi_qr_codes_create, string $contentType = self::contentTypes['createSpiQrCode'][0])
     {
-        $request = $this->createProductRequest($products_create, $contentType);
+        $request = $this->createSpiQrCodeRequest($spi_qr_codes_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +198,7 @@ class ProductsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $request,
                         $response,
                     );
@@ -238,7 +238,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\SpiQrCodes',
                 $request,
                 $response,
             );
@@ -247,7 +247,7 @@ class ProductsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,19 +284,19 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsync
+     * Operation createSpiQrCodeAsync
      *
-     * Create product
+     * Create spi qr code
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\SpiQrCodesCreate $spi_qr_codes_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsync($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createSpiQrCodeAsync($spi_qr_codes_create, string $contentType = self::contentTypes['createSpiQrCode'][0])
     {
-        return $this->createProductAsyncWithHttpInfo($products_create, $contentType)
+        return $this->createSpiQrCodeAsyncWithHttpInfo($spi_qr_codes_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -305,20 +305,20 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsyncWithHttpInfo
+     * Operation createSpiQrCodeAsyncWithHttpInfo
      *
-     * Create product
+     * Create spi qr code
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\SpiQrCodesCreate $spi_qr_codes_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsyncWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createSpiQrCodeAsyncWithHttpInfo($spi_qr_codes_create, string $contentType = self::contentTypes['createSpiQrCode'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->createProductRequest($products_create, $contentType);
+        $returnType = '\LomiSDK\Model\SpiQrCodes';
+        $request = $this->createSpiQrCodeRequest($spi_qr_codes_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,26 +357,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'createProduct'
+     * Create request for operation 'createSpiQrCode'
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\SpiQrCodesCreate $spi_qr_codes_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProductRequest($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createSpiQrCodeRequest($spi_qr_codes_create, string $contentType = self::contentTypes['createSpiQrCode'][0])
     {
 
-        // verify the required parameter 'products_create' is set
-        if ($products_create === null || (is_array($products_create) && count($products_create) === 0)) {
+        // verify the required parameter 'spi_qr_codes_create' is set
+        if ($spi_qr_codes_create === null || (is_array($spi_qr_codes_create) && count($spi_qr_codes_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_create when calling createProduct'
+                'Missing the required parameter $spi_qr_codes_create when calling createSpiQrCode'
             );
         }
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/spi_qr_codes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,12 +394,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_create)) {
+        if (isset($spi_qr_codes_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($spi_qr_codes_create));
             } else {
-                $httpBody = $products_create;
+                $httpBody = $spi_qr_codes_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -453,37 +453,37 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProduct
+     * Operation deleteSpiQrCode
      *
-     * Delete product
+     * Delete spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteProduct($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteSpiQrCode($qr_code_id, string $contentType = self::contentTypes['deleteSpiQrCode'][0])
     {
-        $this->deleteProductWithHttpInfo($product_id, $contentType);
+        $this->deleteSpiQrCodeWithHttpInfo($qr_code_id, $contentType);
     }
 
     /**
-     * Operation deleteProductWithHttpInfo
+     * Operation deleteSpiQrCodeWithHttpInfo
      *
-     * Delete product
+     * Delete spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteProductWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteSpiQrCodeWithHttpInfo($qr_code_id, string $contentType = self::contentTypes['deleteSpiQrCode'][0])
     {
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deleteSpiQrCodeRequest($qr_code_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -543,19 +543,19 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsync
+     * Operation deleteSpiQrCodeAsync
      *
-     * Delete product
+     * Delete spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsync($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteSpiQrCodeAsync($qr_code_id, string $contentType = self::contentTypes['deleteSpiQrCode'][0])
     {
-        return $this->deleteProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->deleteSpiQrCodeAsyncWithHttpInfo($qr_code_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -564,20 +564,20 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsyncWithHttpInfo
+     * Operation deleteSpiQrCodeAsyncWithHttpInfo
      *
-     * Delete product
+     * Delete spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteSpiQrCodeAsyncWithHttpInfo($qr_code_id, string $contentType = self::contentTypes['deleteSpiQrCode'][0])
     {
         $returnType = '';
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deleteSpiQrCodeRequest($qr_code_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -603,26 +603,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'deleteProduct'
+     * Create request for operation 'deleteSpiQrCode'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteProductRequest($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteSpiQrCodeRequest($qr_code_id, string $contentType = self::contentTypes['deleteSpiQrCode'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'qr_code_id' is set
+        if ($qr_code_id === null || (is_array($qr_code_id) && count($qr_code_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling deleteProduct'
+                'Missing the required parameter $qr_code_id when calling deleteSpiQrCode'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/spi_qr_codes/{qr_code_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -632,10 +632,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($qr_code_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'qr_code_id' . '}',
+                ObjectSerializer::toPathValue($qr_code_id),
                 $resourcePath
             );
         }
@@ -700,42 +700,42 @@ class ProductsApi
     }
 
     /**
-     * Operation listProducts
+     * Operation listSpiQrCodes
      *
-     * List products
+     * List spi qr codes
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSpiQrCodes'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\ListSpiQrCodes200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function listProducts($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listSpiQrCodes($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listSpiQrCodes'][0])
     {
-        list($response) = $this->listProductsWithHttpInfo($limit, $offset, $sort, $contentType);
+        list($response) = $this->listSpiQrCodesWithHttpInfo($limit, $offset, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation listProductsWithHttpInfo
+     * Operation listSpiQrCodesWithHttpInfo
      *
-     * List products
+     * List spi qr codes
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSpiQrCodes'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\ListSpiQrCodes200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProductsWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listSpiQrCodesWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listSpiQrCodes'][0])
     {
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $request = $this->listSpiQrCodesRequest($limit, $offset, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -763,7 +763,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListSpiQrCodes200Response',
                         $request,
                         $response,
                     );
@@ -797,7 +797,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\ListProducts200Response',
+                '\LomiSDK\Model\ListSpiQrCodes200Response',
                 $request,
                 $response,
             );
@@ -806,7 +806,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListSpiQrCodes200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -835,21 +835,21 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsync
+     * Operation listSpiQrCodesAsync
      *
-     * List products
+     * List spi qr codes
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSpiQrCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listSpiQrCodesAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listSpiQrCodes'][0])
     {
-        return $this->listProductsAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
+        return $this->listSpiQrCodesAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -858,22 +858,22 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsyncWithHttpInfo
+     * Operation listSpiQrCodesAsyncWithHttpInfo
      *
-     * List products
+     * List spi qr codes
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSpiQrCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listSpiQrCodesAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listSpiQrCodes'][0])
     {
-        $returnType = '\LomiSDK\Model\ListProducts200Response';
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $returnType = '\LomiSDK\Model\ListSpiQrCodes200Response';
+        $request = $this->listSpiQrCodesRequest($limit, $offset, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -912,33 +912,33 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'listProducts'
+     * Create request for operation 'listSpiQrCodes'
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSpiQrCodes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listProductsRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listSpiQrCodesRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listSpiQrCodes'][0])
     {
 
         if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling SPIQRCodesApi.listSpiQrCodes, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling SPIQRCodesApi.listSpiQrCodes, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.listProducts, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling SPIQRCodesApi.listSpiQrCodes, must be bigger than or equal to 0.');
         }
         
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/spi_qr_codes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1035,38 +1035,38 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProduct
+     * Operation retrieveSpiQrCode
      *
-     * Retrieve product
+     * Retrieve spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function retrieveProduct($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveSpiQrCode($qr_code_id, string $contentType = self::contentTypes['retrieveSpiQrCode'][0])
     {
-        list($response) = $this->retrieveProductWithHttpInfo($product_id, $contentType);
+        list($response) = $this->retrieveSpiQrCodeWithHttpInfo($qr_code_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation retrieveProductWithHttpInfo
+     * Operation retrieveSpiQrCodeWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrieveProductWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveSpiQrCodeWithHttpInfo($qr_code_id, string $contentType = self::contentTypes['retrieveSpiQrCode'][0])
     {
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $request = $this->retrieveSpiQrCodeRequest($qr_code_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1094,7 +1094,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $request,
                         $response,
                     );
@@ -1134,7 +1134,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\SpiQrCodes',
                 $request,
                 $response,
             );
@@ -1143,7 +1143,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1180,19 +1180,19 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsync
+     * Operation retrieveSpiQrCodeAsync
      *
-     * Retrieve product
+     * Retrieve spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsync($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveSpiQrCodeAsync($qr_code_id, string $contentType = self::contentTypes['retrieveSpiQrCode'][0])
     {
-        return $this->retrieveProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->retrieveSpiQrCodeAsyncWithHttpInfo($qr_code_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1201,20 +1201,20 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsyncWithHttpInfo
+     * Operation retrieveSpiQrCodeAsyncWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveSpiQrCodeAsyncWithHttpInfo($qr_code_id, string $contentType = self::contentTypes['retrieveSpiQrCode'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $returnType = '\LomiSDK\Model\SpiQrCodes';
+        $request = $this->retrieveSpiQrCodeRequest($qr_code_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1253,26 +1253,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'retrieveProduct'
+     * Create request for operation 'retrieveSpiQrCode'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retrieveProductRequest($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveSpiQrCodeRequest($qr_code_id, string $contentType = self::contentTypes['retrieveSpiQrCode'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'qr_code_id' is set
+        if ($qr_code_id === null || (is_array($qr_code_id) && count($qr_code_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling retrieveProduct'
+                'Missing the required parameter $qr_code_id when calling retrieveSpiQrCode'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/spi_qr_codes/{qr_code_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1282,10 +1282,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($qr_code_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'qr_code_id' . '}',
+                ObjectSerializer::toPathValue($qr_code_id),
                 $resourcePath
             );
         }
@@ -1350,40 +1350,40 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProduct
+     * Operation updateSpiQrCode
      *
-     * Update product
+     * Update spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  \LomiSDK\Model\SpiQrCodesUpdate $spi_qr_codes_update spi_qr_codes_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function updateProduct($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateSpiQrCode($qr_code_id, $spi_qr_codes_update, string $contentType = self::contentTypes['updateSpiQrCode'][0])
     {
-        list($response) = $this->updateProductWithHttpInfo($product_id, $products_update, $contentType);
+        list($response) = $this->updateSpiQrCodeWithHttpInfo($qr_code_id, $spi_qr_codes_update, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateProductWithHttpInfo
+     * Operation updateSpiQrCodeWithHttpInfo
      *
-     * Update product
+     * Update spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  \LomiSDK\Model\SpiQrCodesUpdate $spi_qr_codes_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSpiQrCode'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\SpiQrCodes|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateSpiQrCodeWithHttpInfo($qr_code_id, $spi_qr_codes_update, string $contentType = self::contentTypes['updateSpiQrCode'][0])
     {
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $request = $this->updateSpiQrCodeRequest($qr_code_id, $spi_qr_codes_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1411,7 +1411,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $request,
                         $response,
                     );
@@ -1457,7 +1457,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\SpiQrCodes',
                 $request,
                 $response,
             );
@@ -1466,7 +1466,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\SpiQrCodes',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,20 +1511,20 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsync
+     * Operation updateSpiQrCodeAsync
      *
-     * Update product
+     * Update spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  \LomiSDK\Model\SpiQrCodesUpdate $spi_qr_codes_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsync($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateSpiQrCodeAsync($qr_code_id, $spi_qr_codes_update, string $contentType = self::contentTypes['updateSpiQrCode'][0])
     {
-        return $this->updateProductAsyncWithHttpInfo($product_id, $products_update, $contentType)
+        return $this->updateSpiQrCodeAsyncWithHttpInfo($qr_code_id, $spi_qr_codes_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1533,21 +1533,21 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsyncWithHttpInfo
+     * Operation updateSpiQrCodeAsyncWithHttpInfo
      *
-     * Update product
+     * Update spi qr code
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  \LomiSDK\Model\SpiQrCodesUpdate $spi_qr_codes_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsyncWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateSpiQrCodeAsyncWithHttpInfo($qr_code_id, $spi_qr_codes_update, string $contentType = self::contentTypes['updateSpiQrCode'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $returnType = '\LomiSDK\Model\SpiQrCodes';
+        $request = $this->updateSpiQrCodeRequest($qr_code_id, $spi_qr_codes_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1586,34 +1586,34 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'updateProduct'
+     * Create request for operation 'updateSpiQrCode'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $qr_code_id Unique identifier for the spi qr code (required)
+     * @param  \LomiSDK\Model\SpiQrCodesUpdate $spi_qr_codes_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSpiQrCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateProductRequest($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateSpiQrCodeRequest($qr_code_id, $spi_qr_codes_update, string $contentType = self::contentTypes['updateSpiQrCode'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'qr_code_id' is set
+        if ($qr_code_id === null || (is_array($qr_code_id) && count($qr_code_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling updateProduct'
+                'Missing the required parameter $qr_code_id when calling updateSpiQrCode'
             );
         }
 
-        // verify the required parameter 'products_update' is set
-        if ($products_update === null || (is_array($products_update) && count($products_update) === 0)) {
+        // verify the required parameter 'spi_qr_codes_update' is set
+        if ($spi_qr_codes_update === null || (is_array($spi_qr_codes_update) && count($spi_qr_codes_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_update when calling updateProduct'
+                'Missing the required parameter $spi_qr_codes_update when calling updateSpiQrCode'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/spi_qr_codes/{qr_code_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1623,10 +1623,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($qr_code_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'qr_code_id' . '}',
+                ObjectSerializer::toPathValue($qr_code_id),
                 $resourcePath
             );
         }
@@ -1639,12 +1639,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_update)) {
+        if (isset($spi_qr_codes_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($spi_qr_codes_update));
             } else {
-                $httpBody = $products_update;
+                $httpBody = $spi_qr_codes_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

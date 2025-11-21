@@ -1,6 +1,6 @@
 <?php
 /**
- * PayoutsApi
+ * BeneficiaryPayoutsApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use LomiSDK\HeaderSelector;
 use LomiSDK\ObjectSerializer;
 
 /**
- * PayoutsApi Class Doc Comment
+ * BeneficiaryPayoutsApi Class Doc Comment
  *
  * @category Class
  * @package  LomiSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PayoutsApi
+class BeneficiaryPayoutsApi
 {
     /**
      * @var ClientInterface
@@ -75,19 +75,13 @@ class PayoutsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createPayout' => [
+        'createBeneficiaryPayout' => [
             'application/json',
         ],
-        'deletePayout' => [
+        'listBeneficiaryPayouts' => [
             'application/json',
         ],
-        'listPayouts' => [
-            'application/json',
-        ],
-        'retrievePayout' => [
-            'application/json',
-        ],
-        'updatePayout' => [
+        'retrieveBeneficiaryPayout' => [
             'application/json',
         ],
     ];
@@ -139,38 +133,38 @@ class PayoutsApi
     }
 
     /**
-     * Operation createPayout
+     * Operation createBeneficiaryPayout
      *
-     * Create payout
+     * Create beneficiary payout
      *
-     * @param  \LomiSDK\Model\PayoutsCreate $payouts_create payouts_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayout'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\BeneficiaryPayoutsCreate $beneficiary_payouts_create beneficiary_payouts_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\BeneficiaryPayouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function createPayout($payouts_create, string $contentType = self::contentTypes['createPayout'][0])
+    public function createBeneficiaryPayout($beneficiary_payouts_create, string $contentType = self::contentTypes['createBeneficiaryPayout'][0])
     {
-        list($response) = $this->createPayoutWithHttpInfo($payouts_create, $contentType);
+        list($response) = $this->createBeneficiaryPayoutWithHttpInfo($beneficiary_payouts_create, $contentType);
         return $response;
     }
 
     /**
-     * Operation createPayoutWithHttpInfo
+     * Operation createBeneficiaryPayoutWithHttpInfo
      *
-     * Create payout
+     * Create beneficiary payout
      *
-     * @param  \LomiSDK\Model\PayoutsCreate $payouts_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayout'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\BeneficiaryPayoutsCreate $beneficiary_payouts_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\BeneficiaryPayouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPayoutWithHttpInfo($payouts_create, string $contentType = self::contentTypes['createPayout'][0])
+    public function createBeneficiaryPayoutWithHttpInfo($beneficiary_payouts_create, string $contentType = self::contentTypes['createBeneficiaryPayout'][0])
     {
-        $request = $this->createPayoutRequest($payouts_create, $contentType);
+        $request = $this->createBeneficiaryPayoutRequest($beneficiary_payouts_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +192,7 @@ class PayoutsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Payouts',
+                        '\LomiSDK\Model\BeneficiaryPayouts',
                         $request,
                         $response,
                     );
@@ -238,7 +232,7 @@ class PayoutsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Payouts',
+                '\LomiSDK\Model\BeneficiaryPayouts',
                 $request,
                 $response,
             );
@@ -247,7 +241,7 @@ class PayoutsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Payouts',
+                        '\LomiSDK\Model\BeneficiaryPayouts',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,19 +278,19 @@ class PayoutsApi
     }
 
     /**
-     * Operation createPayoutAsync
+     * Operation createBeneficiaryPayoutAsync
      *
-     * Create payout
+     * Create beneficiary payout
      *
-     * @param  \LomiSDK\Model\PayoutsCreate $payouts_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayout'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\BeneficiaryPayoutsCreate $beneficiary_payouts_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPayoutAsync($payouts_create, string $contentType = self::contentTypes['createPayout'][0])
+    public function createBeneficiaryPayoutAsync($beneficiary_payouts_create, string $contentType = self::contentTypes['createBeneficiaryPayout'][0])
     {
-        return $this->createPayoutAsyncWithHttpInfo($payouts_create, $contentType)
+        return $this->createBeneficiaryPayoutAsyncWithHttpInfo($beneficiary_payouts_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -305,20 +299,20 @@ class PayoutsApi
     }
 
     /**
-     * Operation createPayoutAsyncWithHttpInfo
+     * Operation createBeneficiaryPayoutAsyncWithHttpInfo
      *
-     * Create payout
+     * Create beneficiary payout
      *
-     * @param  \LomiSDK\Model\PayoutsCreate $payouts_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayout'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\BeneficiaryPayoutsCreate $beneficiary_payouts_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPayoutAsyncWithHttpInfo($payouts_create, string $contentType = self::contentTypes['createPayout'][0])
+    public function createBeneficiaryPayoutAsyncWithHttpInfo($beneficiary_payouts_create, string $contentType = self::contentTypes['createBeneficiaryPayout'][0])
     {
-        $returnType = '\LomiSDK\Model\Payouts';
-        $request = $this->createPayoutRequest($payouts_create, $contentType);
+        $returnType = '\LomiSDK\Model\BeneficiaryPayouts';
+        $request = $this->createBeneficiaryPayoutRequest($beneficiary_payouts_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,26 +351,26 @@ class PayoutsApi
     }
 
     /**
-     * Create request for operation 'createPayout'
+     * Create request for operation 'createBeneficiaryPayout'
      *
-     * @param  \LomiSDK\Model\PayoutsCreate $payouts_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayout'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\BeneficiaryPayoutsCreate $beneficiary_payouts_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPayoutRequest($payouts_create, string $contentType = self::contentTypes['createPayout'][0])
+    public function createBeneficiaryPayoutRequest($beneficiary_payouts_create, string $contentType = self::contentTypes['createBeneficiaryPayout'][0])
     {
 
-        // verify the required parameter 'payouts_create' is set
-        if ($payouts_create === null || (is_array($payouts_create) && count($payouts_create) === 0)) {
+        // verify the required parameter 'beneficiary_payouts_create' is set
+        if ($beneficiary_payouts_create === null || (is_array($beneficiary_payouts_create) && count($beneficiary_payouts_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $payouts_create when calling createPayout'
+                'Missing the required parameter $beneficiary_payouts_create when calling createBeneficiaryPayout'
             );
         }
 
 
-        $resourcePath = '/payouts';
+        $resourcePath = '/beneficiary_payouts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,12 +388,12 @@ class PayoutsApi
         );
 
         // for model (json/xml)
-        if (isset($payouts_create)) {
+        if (isset($beneficiary_payouts_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payouts_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($beneficiary_payouts_create));
             } else {
-                $httpBody = $payouts_create;
+                $httpBody = $beneficiary_payouts_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -453,289 +447,42 @@ class PayoutsApi
     }
 
     /**
-     * Operation deletePayout
+     * Operation listBeneficiaryPayouts
      *
-     * Delete payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePayout'] to see the possible values for this operation
-     *
-     * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function deletePayout($payout_id, string $contentType = self::contentTypes['deletePayout'][0])
-    {
-        $this->deletePayoutWithHttpInfo($payout_id, $contentType);
-    }
-
-    /**
-     * Operation deletePayoutWithHttpInfo
-     *
-     * Delete payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePayout'] to see the possible values for this operation
-     *
-     * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function deletePayoutWithHttpInfo($payout_id, string $contentType = self::contentTypes['deletePayout'][0])
-    {
-        $request = $this->deletePayoutRequest($payout_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation deletePayoutAsync
-     *
-     * Delete payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deletePayoutAsync($payout_id, string $contentType = self::contentTypes['deletePayout'][0])
-    {
-        return $this->deletePayoutAsyncWithHttpInfo($payout_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation deletePayoutAsyncWithHttpInfo
-     *
-     * Delete payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function deletePayoutAsyncWithHttpInfo($payout_id, string $contentType = self::contentTypes['deletePayout'][0])
-    {
-        $returnType = '';
-        $request = $this->deletePayoutRequest($payout_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'deletePayout'
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function deletePayoutRequest($payout_id, string $contentType = self::contentTypes['deletePayout'][0])
-    {
-
-        // verify the required parameter 'payout_id' is set
-        if ($payout_id === null || (is_array($payout_id) && count($payout_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $payout_id when calling deletePayout'
-            );
-        }
-
-
-        $resourcePath = '/payouts/{payout_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($payout_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'payout_id' . '}',
-                ObjectSerializer::toPathValue($payout_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
-        if ($apiKey !== null) {
-            $headers['X-API-KEY'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listPayouts
-     *
-     * List payouts
+     * List beneficiary payouts
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPayouts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBeneficiaryPayouts'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\ListPayouts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\ListBeneficiaryPayouts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function listPayouts($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPayouts'][0])
+    public function listBeneficiaryPayouts($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listBeneficiaryPayouts'][0])
     {
-        list($response) = $this->listPayoutsWithHttpInfo($limit, $offset, $sort, $contentType);
+        list($response) = $this->listBeneficiaryPayoutsWithHttpInfo($limit, $offset, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation listPayoutsWithHttpInfo
+     * Operation listBeneficiaryPayoutsWithHttpInfo
      *
-     * List payouts
+     * List beneficiary payouts
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPayouts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBeneficiaryPayouts'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\ListPayouts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\ListBeneficiaryPayouts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPayoutsWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPayouts'][0])
+    public function listBeneficiaryPayoutsWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listBeneficiaryPayouts'][0])
     {
-        $request = $this->listPayoutsRequest($limit, $offset, $sort, $contentType);
+        $request = $this->listBeneficiaryPayoutsRequest($limit, $offset, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -763,7 +510,7 @@ class PayoutsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\ListPayouts200Response',
+                        '\LomiSDK\Model\ListBeneficiaryPayouts200Response',
                         $request,
                         $response,
                     );
@@ -797,7 +544,7 @@ class PayoutsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\ListPayouts200Response',
+                '\LomiSDK\Model\ListBeneficiaryPayouts200Response',
                 $request,
                 $response,
             );
@@ -806,7 +553,7 @@ class PayoutsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\ListPayouts200Response',
+                        '\LomiSDK\Model\ListBeneficiaryPayouts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -835,21 +582,21 @@ class PayoutsApi
     }
 
     /**
-     * Operation listPayoutsAsync
+     * Operation listBeneficiaryPayoutsAsync
      *
-     * List payouts
+     * List beneficiary payouts
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPayouts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBeneficiaryPayouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPayoutsAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPayouts'][0])
+    public function listBeneficiaryPayoutsAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listBeneficiaryPayouts'][0])
     {
-        return $this->listPayoutsAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
+        return $this->listBeneficiaryPayoutsAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -858,22 +605,22 @@ class PayoutsApi
     }
 
     /**
-     * Operation listPayoutsAsyncWithHttpInfo
+     * Operation listBeneficiaryPayoutsAsyncWithHttpInfo
      *
-     * List payouts
+     * List beneficiary payouts
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPayouts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBeneficiaryPayouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPayoutsAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPayouts'][0])
+    public function listBeneficiaryPayoutsAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listBeneficiaryPayouts'][0])
     {
-        $returnType = '\LomiSDK\Model\ListPayouts200Response';
-        $request = $this->listPayoutsRequest($limit, $offset, $sort, $contentType);
+        $returnType = '\LomiSDK\Model\ListBeneficiaryPayouts200Response';
+        $request = $this->listBeneficiaryPayoutsRequest($limit, $offset, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -912,33 +659,33 @@ class PayoutsApi
     }
 
     /**
-     * Create request for operation 'listPayouts'
+     * Create request for operation 'listBeneficiaryPayouts'
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPayouts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBeneficiaryPayouts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPayoutsRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listPayouts'][0])
+    public function listBeneficiaryPayoutsRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listBeneficiaryPayouts'][0])
     {
 
         if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling PayoutsApi.listPayouts, must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BeneficiaryPayoutsApi.listBeneficiaryPayouts, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling PayoutsApi.listPayouts, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BeneficiaryPayoutsApi.listBeneficiaryPayouts, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling PayoutsApi.listPayouts, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling BeneficiaryPayoutsApi.listBeneficiaryPayouts, must be bigger than or equal to 0.');
         }
         
 
 
-        $resourcePath = '/payouts';
+        $resourcePath = '/beneficiary_payouts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1035,38 +782,38 @@ class PayoutsApi
     }
 
     /**
-     * Operation retrievePayout
+     * Operation retrieveBeneficiaryPayout
      *
-     * Retrieve payout
+     * Retrieve beneficiary payout
      *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePayout'] to see the possible values for this operation
+     * @param  string $payout_id Unique identifier for the beneficiary payout (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\BeneficiaryPayouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function retrievePayout($payout_id, string $contentType = self::contentTypes['retrievePayout'][0])
+    public function retrieveBeneficiaryPayout($payout_id, string $contentType = self::contentTypes['retrieveBeneficiaryPayout'][0])
     {
-        list($response) = $this->retrievePayoutWithHttpInfo($payout_id, $contentType);
+        list($response) = $this->retrieveBeneficiaryPayoutWithHttpInfo($payout_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation retrievePayoutWithHttpInfo
+     * Operation retrieveBeneficiaryPayoutWithHttpInfo
      *
-     * Retrieve payout
+     * Retrieve beneficiary payout
      *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePayout'] to see the possible values for this operation
+     * @param  string $payout_id Unique identifier for the beneficiary payout (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\BeneficiaryPayouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrievePayoutWithHttpInfo($payout_id, string $contentType = self::contentTypes['retrievePayout'][0])
+    public function retrieveBeneficiaryPayoutWithHttpInfo($payout_id, string $contentType = self::contentTypes['retrieveBeneficiaryPayout'][0])
     {
-        $request = $this->retrievePayoutRequest($payout_id, $contentType);
+        $request = $this->retrieveBeneficiaryPayoutRequest($payout_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1094,7 +841,7 @@ class PayoutsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Payouts',
+                        '\LomiSDK\Model\BeneficiaryPayouts',
                         $request,
                         $response,
                     );
@@ -1134,7 +881,7 @@ class PayoutsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Payouts',
+                '\LomiSDK\Model\BeneficiaryPayouts',
                 $request,
                 $response,
             );
@@ -1143,7 +890,7 @@ class PayoutsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Payouts',
+                        '\LomiSDK\Model\BeneficiaryPayouts',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1180,19 +927,19 @@ class PayoutsApi
     }
 
     /**
-     * Operation retrievePayoutAsync
+     * Operation retrieveBeneficiaryPayoutAsync
      *
-     * Retrieve payout
+     * Retrieve beneficiary payout
      *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePayout'] to see the possible values for this operation
+     * @param  string $payout_id Unique identifier for the beneficiary payout (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrievePayoutAsync($payout_id, string $contentType = self::contentTypes['retrievePayout'][0])
+    public function retrieveBeneficiaryPayoutAsync($payout_id, string $contentType = self::contentTypes['retrieveBeneficiaryPayout'][0])
     {
-        return $this->retrievePayoutAsyncWithHttpInfo($payout_id, $contentType)
+        return $this->retrieveBeneficiaryPayoutAsyncWithHttpInfo($payout_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1201,20 +948,20 @@ class PayoutsApi
     }
 
     /**
-     * Operation retrievePayoutAsyncWithHttpInfo
+     * Operation retrieveBeneficiaryPayoutAsyncWithHttpInfo
      *
-     * Retrieve payout
+     * Retrieve beneficiary payout
      *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePayout'] to see the possible values for this operation
+     * @param  string $payout_id Unique identifier for the beneficiary payout (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrievePayoutAsyncWithHttpInfo($payout_id, string $contentType = self::contentTypes['retrievePayout'][0])
+    public function retrieveBeneficiaryPayoutAsyncWithHttpInfo($payout_id, string $contentType = self::contentTypes['retrieveBeneficiaryPayout'][0])
     {
-        $returnType = '\LomiSDK\Model\Payouts';
-        $request = $this->retrievePayoutRequest($payout_id, $contentType);
+        $returnType = '\LomiSDK\Model\BeneficiaryPayouts';
+        $request = $this->retrieveBeneficiaryPayoutRequest($payout_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1253,26 +1000,26 @@ class PayoutsApi
     }
 
     /**
-     * Create request for operation 'retrievePayout'
+     * Create request for operation 'retrieveBeneficiaryPayout'
      *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrievePayout'] to see the possible values for this operation
+     * @param  string $payout_id Unique identifier for the beneficiary payout (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveBeneficiaryPayout'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retrievePayoutRequest($payout_id, string $contentType = self::contentTypes['retrievePayout'][0])
+    public function retrieveBeneficiaryPayoutRequest($payout_id, string $contentType = self::contentTypes['retrieveBeneficiaryPayout'][0])
     {
 
         // verify the required parameter 'payout_id' is set
         if ($payout_id === null || (is_array($payout_id) && count($payout_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $payout_id when calling retrievePayout'
+                'Missing the required parameter $payout_id when calling retrieveBeneficiaryPayout'
             );
         }
 
 
-        $resourcePath = '/payouts/{payout_id}';
+        $resourcePath = '/beneficiary_payouts/{payout_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1343,354 +1090,6 @@ class PayoutsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updatePayout
-     *
-     * Update payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  \LomiSDK\Model\PayoutsUpdate $payouts_update payouts_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePayout'] to see the possible values for this operation
-     *
-     * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
-     */
-    public function updatePayout($payout_id, $payouts_update, string $contentType = self::contentTypes['updatePayout'][0])
-    {
-        list($response) = $this->updatePayoutWithHttpInfo($payout_id, $payouts_update, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updatePayoutWithHttpInfo
-     *
-     * Update payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  \LomiSDK\Model\PayoutsUpdate $payouts_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePayout'] to see the possible values for this operation
-     *
-     * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Payouts|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updatePayoutWithHttpInfo($payout_id, $payouts_update, string $contentType = self::contentTypes['updatePayout'][0])
-    {
-        $request = $this->updatePayoutRequest($payout_id, $payouts_update, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Payouts',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Payouts',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Payouts',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\LomiSDK\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updatePayoutAsync
-     *
-     * Update payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  \LomiSDK\Model\PayoutsUpdate $payouts_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updatePayoutAsync($payout_id, $payouts_update, string $contentType = self::contentTypes['updatePayout'][0])
-    {
-        return $this->updatePayoutAsyncWithHttpInfo($payout_id, $payouts_update, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updatePayoutAsyncWithHttpInfo
-     *
-     * Update payout
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  \LomiSDK\Model\PayoutsUpdate $payouts_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updatePayoutAsyncWithHttpInfo($payout_id, $payouts_update, string $contentType = self::contentTypes['updatePayout'][0])
-    {
-        $returnType = '\LomiSDK\Model\Payouts';
-        $request = $this->updatePayoutRequest($payout_id, $payouts_update, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updatePayout'
-     *
-     * @param  string $payout_id Unique identifier for the payout (required)
-     * @param  \LomiSDK\Model\PayoutsUpdate $payouts_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePayout'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updatePayoutRequest($payout_id, $payouts_update, string $contentType = self::contentTypes['updatePayout'][0])
-    {
-
-        // verify the required parameter 'payout_id' is set
-        if ($payout_id === null || (is_array($payout_id) && count($payout_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $payout_id when calling updatePayout'
-            );
-        }
-
-        // verify the required parameter 'payouts_update' is set
-        if ($payouts_update === null || (is_array($payouts_update) && count($payouts_update) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $payouts_update when calling updatePayout'
-            );
-        }
-
-
-        $resourcePath = '/payouts/{payout_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($payout_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'payout_id' . '}',
-                ObjectSerializer::toPathValue($payout_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($payouts_update)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payouts_update));
-            } else {
-                $httpBody = $payouts_update;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('X-API-KEY');
-        if ($apiKey !== null) {
-            $headers['X-API-KEY'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

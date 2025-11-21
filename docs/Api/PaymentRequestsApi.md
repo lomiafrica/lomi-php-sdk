@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\PaymentRequestsApi
 
-Product catalog - manage one-time and recurring products
+
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createPaymentRequest()**](PaymentRequestsApi.md#createPaymentRequest) | **POST** /payment_requests | Create payment request |
+| [**deletePaymentRequest()**](PaymentRequestsApi.md#deletePaymentRequest) | **DELETE** /payment_requests/{request_id} | Delete payment request |
+| [**listPaymentRequests()**](PaymentRequestsApi.md#listPaymentRequests) | **GET** /payment_requests | List payment requests |
+| [**retrievePaymentRequest()**](PaymentRequestsApi.md#retrievePaymentRequest) | **GET** /payment_requests/{request_id} | Retrieve payment request |
+| [**updatePaymentRequest()**](PaymentRequestsApi.md#updatePaymentRequest) | **PATCH** /payment_requests/{request_id} | Update payment request |
 
 
-## `createProduct()`
+## `createPaymentRequest()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createPaymentRequest($payment_requests_create): \LomiSDK\Model\PaymentRequests
 ```
 
-Create product
+Create payment request
 
-Product catalog - manage one-time and recurring products
+Payment requests - create payment intents and track status
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentRequestsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$payment_requests_create = {"amount":25000,"currency_code":"XOF","customer_id":"cus_1234567890abcdef","description":"Payment for premium subscription","metadata":{"order_id":"ORD-2024-001"}}; // \LomiSDK\Model\PaymentRequestsCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createPaymentRequest($payment_requests_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentRequestsApi->createPaymentRequest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **payment_requests_create** | [**\LomiSDK\Model\PaymentRequestsCreate**](../Model/PaymentRequestsCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentRequests**](../Model/PaymentRequests.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deletePaymentRequest()`
 
 ```php
-deleteProduct($product_id)
+deletePaymentRequest($request_id)
 ```
 
-Delete product
+Delete payment request
 
-Delete a specific product. This action cannot be undone.
+Delete a specific payment request. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentRequestsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$request_id = 'request_id_example'; // string | Unique identifier for the payment request
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deletePaymentRequest($request_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentRequestsApi->deletePaymentRequest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **request_id** | **string**| Unique identifier for the payment request | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listPaymentRequests()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listPaymentRequests($limit, $offset, $sort): \LomiSDK\Model\ListPaymentRequests200Response
 ```
 
-List products
+List payment requests
 
-Product catalog - manage one-time and recurring products
+Payment requests - create payment intents and track status
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentRequestsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listPaymentRequests($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentRequestsApi->listPaymentRequests: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListPaymentRequests200Response**](../Model/ListPaymentRequests200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrievePaymentRequest()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrievePaymentRequest($request_id): \LomiSDK\Model\PaymentRequests
 ```
 
-Retrieve product
+Retrieve payment request
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific payment request by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentRequestsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$request_id = 'request_id_example'; // string | Unique identifier for the payment request
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrievePaymentRequest($request_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentRequestsApi->retrievePaymentRequest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **request_id** | **string**| Unique identifier for the payment request | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentRequests**](../Model/PaymentRequests.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updatePaymentRequest()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updatePaymentRequest($request_id, $payment_requests_update): \LomiSDK\Model\PaymentRequests
 ```
 
-Update product
+Update payment request
 
-Update a specific product. Only provided fields will be updated.
+Update a specific payment request. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentRequestsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$request_id = 'request_id_example'; // string | Unique identifier for the payment request
+$payment_requests_update = {"metadata":{"order_id":"ORD-2024-001-UPDATED","notes":"Customer requested invoice"}}; // \LomiSDK\Model\PaymentRequestsUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updatePaymentRequest($request_id, $payment_requests_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentRequestsApi->updatePaymentRequest: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **request_id** | **string**| Unique identifier for the payment request | |
+| **payment_requests_update** | [**\LomiSDK\Model\PaymentRequestsUpdate**](../Model/PaymentRequestsUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentRequests**](../Model/PaymentRequests.md)
 
 ### Authorization
 

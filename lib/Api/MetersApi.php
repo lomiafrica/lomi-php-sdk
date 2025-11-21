@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductsApi
+ * MetersApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use LomiSDK\HeaderSelector;
 use LomiSDK\ObjectSerializer;
 
 /**
- * ProductsApi Class Doc Comment
+ * MetersApi Class Doc Comment
  *
  * @category Class
  * @package  LomiSDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ProductsApi
+class MetersApi
 {
     /**
      * @var ClientInterface
@@ -75,19 +75,19 @@ class ProductsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createProduct' => [
+        'createMeter' => [
             'application/json',
         ],
-        'deleteProduct' => [
+        'deleteMeter' => [
             'application/json',
         ],
-        'listProducts' => [
+        'listMeters' => [
             'application/json',
         ],
-        'retrieveProduct' => [
+        'retrieveMeter' => [
             'application/json',
         ],
-        'updateProduct' => [
+        'updateMeter' => [
             'application/json',
         ],
     ];
@@ -139,38 +139,38 @@ class ProductsApi
     }
 
     /**
-     * Operation createProduct
+     * Operation createMeter
      *
-     * Create product
+     * Create meter
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\MetersCreate $meters_create meters_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function createProduct($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createMeter($meters_create, string $contentType = self::contentTypes['createMeter'][0])
     {
-        list($response) = $this->createProductWithHttpInfo($products_create, $contentType);
+        list($response) = $this->createMeterWithHttpInfo($meters_create, $contentType);
         return $response;
     }
 
     /**
-     * Operation createProductWithHttpInfo
+     * Operation createMeterWithHttpInfo
      *
-     * Create product
+     * Create meter
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\MetersCreate $meters_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createProductWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createMeterWithHttpInfo($meters_create, string $contentType = self::contentTypes['createMeter'][0])
     {
-        $request = $this->createProductRequest($products_create, $contentType);
+        $request = $this->createMeterRequest($meters_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,7 +198,7 @@ class ProductsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $request,
                         $response,
                     );
@@ -238,7 +238,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Meters',
                 $request,
                 $response,
             );
@@ -247,7 +247,7 @@ class ProductsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,19 +284,19 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsync
+     * Operation createMeterAsync
      *
-     * Create product
+     * Create meter
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\MetersCreate $meters_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsync($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createMeterAsync($meters_create, string $contentType = self::contentTypes['createMeter'][0])
     {
-        return $this->createProductAsyncWithHttpInfo($products_create, $contentType)
+        return $this->createMeterAsyncWithHttpInfo($meters_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -305,20 +305,20 @@ class ProductsApi
     }
 
     /**
-     * Operation createProductAsyncWithHttpInfo
+     * Operation createMeterAsyncWithHttpInfo
      *
-     * Create product
+     * Create meter
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\MetersCreate $meters_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createProductAsyncWithHttpInfo($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createMeterAsyncWithHttpInfo($meters_create, string $contentType = self::contentTypes['createMeter'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->createProductRequest($products_create, $contentType);
+        $returnType = '\LomiSDK\Model\Meters';
+        $request = $this->createMeterRequest($meters_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,26 +357,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'createProduct'
+     * Create request for operation 'createMeter'
      *
-     * @param  \LomiSDK\Model\ProductsCreate $products_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProduct'] to see the possible values for this operation
+     * @param  \LomiSDK\Model\MetersCreate $meters_create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createProductRequest($products_create, string $contentType = self::contentTypes['createProduct'][0])
+    public function createMeterRequest($meters_create, string $contentType = self::contentTypes['createMeter'][0])
     {
 
-        // verify the required parameter 'products_create' is set
-        if ($products_create === null || (is_array($products_create) && count($products_create) === 0)) {
+        // verify the required parameter 'meters_create' is set
+        if ($meters_create === null || (is_array($meters_create) && count($meters_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_create when calling createProduct'
+                'Missing the required parameter $meters_create when calling createMeter'
             );
         }
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/meters';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -394,12 +394,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_create)) {
+        if (isset($meters_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_create));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($meters_create));
             } else {
-                $httpBody = $products_create;
+                $httpBody = $meters_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -453,37 +453,37 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProduct
+     * Operation deleteMeter
      *
-     * Delete product
+     * Delete meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteProduct($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteMeter($meter_id, string $contentType = self::contentTypes['deleteMeter'][0])
     {
-        $this->deleteProductWithHttpInfo($product_id, $contentType);
+        $this->deleteMeterWithHttpInfo($meter_id, $contentType);
     }
 
     /**
-     * Operation deleteProductWithHttpInfo
+     * Operation deleteMeterWithHttpInfo
      *
-     * Delete product
+     * Delete meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteProductWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteMeterWithHttpInfo($meter_id, string $contentType = self::contentTypes['deleteMeter'][0])
     {
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deleteMeterRequest($meter_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -543,19 +543,19 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsync
+     * Operation deleteMeterAsync
      *
-     * Delete product
+     * Delete meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsync($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteMeterAsync($meter_id, string $contentType = self::contentTypes['deleteMeter'][0])
     {
-        return $this->deleteProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->deleteMeterAsyncWithHttpInfo($meter_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -564,20 +564,20 @@ class ProductsApi
     }
 
     /**
-     * Operation deleteProductAsyncWithHttpInfo
+     * Operation deleteMeterAsyncWithHttpInfo
      *
-     * Delete product
+     * Delete meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteMeterAsyncWithHttpInfo($meter_id, string $contentType = self::contentTypes['deleteMeter'][0])
     {
         $returnType = '';
-        $request = $this->deleteProductRequest($product_id, $contentType);
+        $request = $this->deleteMeterRequest($meter_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -603,26 +603,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'deleteProduct'
+     * Create request for operation 'deleteMeter'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteProductRequest($product_id, string $contentType = self::contentTypes['deleteProduct'][0])
+    public function deleteMeterRequest($meter_id, string $contentType = self::contentTypes['deleteMeter'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'meter_id' is set
+        if ($meter_id === null || (is_array($meter_id) && count($meter_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling deleteProduct'
+                'Missing the required parameter $meter_id when calling deleteMeter'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/meters/{meter_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -632,10 +632,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($meter_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'meter_id' . '}',
+                ObjectSerializer::toPathValue($meter_id),
                 $resourcePath
             );
         }
@@ -700,42 +700,42 @@ class ProductsApi
     }
 
     /**
-     * Operation listProducts
+     * Operation listMeters
      *
-     * List products
+     * List meters
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMeters'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\ListMeters200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function listProducts($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listMeters($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listMeters'][0])
     {
-        list($response) = $this->listProductsWithHttpInfo($limit, $offset, $sort, $contentType);
+        list($response) = $this->listMetersWithHttpInfo($limit, $offset, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation listProductsWithHttpInfo
+     * Operation listMetersWithHttpInfo
      *
-     * List products
+     * List meters
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMeters'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\ListProducts200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\ListMeters200Response|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listProductsWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listMetersWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listMeters'][0])
     {
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $request = $this->listMetersRequest($limit, $offset, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -763,7 +763,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListMeters200Response',
                         $request,
                         $response,
                     );
@@ -797,7 +797,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\ListProducts200Response',
+                '\LomiSDK\Model\ListMeters200Response',
                 $request,
                 $response,
             );
@@ -806,7 +806,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\ListProducts200Response',
+                        '\LomiSDK\Model\ListMeters200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -835,21 +835,21 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsync
+     * Operation listMetersAsync
      *
-     * List products
+     * List meters
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMeters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listMetersAsync($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listMeters'][0])
     {
-        return $this->listProductsAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
+        return $this->listMetersAsyncWithHttpInfo($limit, $offset, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -858,22 +858,22 @@ class ProductsApi
     }
 
     /**
-     * Operation listProductsAsyncWithHttpInfo
+     * Operation listMetersAsyncWithHttpInfo
      *
-     * List products
+     * List meters
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMeters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listProductsAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listMetersAsyncWithHttpInfo($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listMeters'][0])
     {
-        $returnType = '\LomiSDK\Model\ListProducts200Response';
-        $request = $this->listProductsRequest($limit, $offset, $sort, $contentType);
+        $returnType = '\LomiSDK\Model\ListMeters200Response';
+        $request = $this->listMetersRequest($limit, $offset, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -912,33 +912,33 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'listProducts'
+     * Create request for operation 'listMeters'
      *
      * @param  int|null $limit Maximum number of items to return (1-100) (optional, default to 20)
      * @param  int|null $offset Number of items to skip for pagination (optional, default to 0)
      * @param  string|null $sort Sort order. Format: &#x60;field:direction&#x60; (e.g., &#x60;created_at:desc&#x60;) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProducts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMeters'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listProductsRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listProducts'][0])
+    public function listMetersRequest($limit = 20, $offset = 0, $sort = null, string $contentType = self::contentTypes['listMeters'][0])
     {
 
         if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MetersApi.listMeters, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling ProductsApi.listProducts, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MetersApi.listMeters, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling ProductsApi.listProducts, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling MetersApi.listMeters, must be bigger than or equal to 0.');
         }
         
 
 
-        $resourcePath = '/products';
+        $resourcePath = '/meters';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1035,38 +1035,38 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProduct
+     * Operation retrieveMeter
      *
-     * Retrieve product
+     * Retrieve meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function retrieveProduct($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveMeter($meter_id, string $contentType = self::contentTypes['retrieveMeter'][0])
     {
-        list($response) = $this->retrieveProductWithHttpInfo($product_id, $contentType);
+        list($response) = $this->retrieveMeterWithHttpInfo($meter_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation retrieveProductWithHttpInfo
+     * Operation retrieveMeterWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrieveProductWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveMeterWithHttpInfo($meter_id, string $contentType = self::contentTypes['retrieveMeter'][0])
     {
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $request = $this->retrieveMeterRequest($meter_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1094,7 +1094,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $request,
                         $response,
                     );
@@ -1134,7 +1134,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Meters',
                 $request,
                 $response,
             );
@@ -1143,7 +1143,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1180,19 +1180,19 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsync
+     * Operation retrieveMeterAsync
      *
-     * Retrieve product
+     * Retrieve meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsync($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveMeterAsync($meter_id, string $contentType = self::contentTypes['retrieveMeter'][0])
     {
-        return $this->retrieveProductAsyncWithHttpInfo($product_id, $contentType)
+        return $this->retrieveMeterAsyncWithHttpInfo($meter_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1201,20 +1201,20 @@ class ProductsApi
     }
 
     /**
-     * Operation retrieveProductAsyncWithHttpInfo
+     * Operation retrieveMeterAsyncWithHttpInfo
      *
-     * Retrieve product
+     * Retrieve meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveProductAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveMeterAsyncWithHttpInfo($meter_id, string $contentType = self::contentTypes['retrieveMeter'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->retrieveProductRequest($product_id, $contentType);
+        $returnType = '\LomiSDK\Model\Meters';
+        $request = $this->retrieveMeterRequest($meter_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1253,26 +1253,26 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'retrieveProduct'
+     * Create request for operation 'retrieveMeter'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retrieveMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retrieveProductRequest($product_id, string $contentType = self::contentTypes['retrieveProduct'][0])
+    public function retrieveMeterRequest($meter_id, string $contentType = self::contentTypes['retrieveMeter'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'meter_id' is set
+        if ($meter_id === null || (is_array($meter_id) && count($meter_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling retrieveProduct'
+                'Missing the required parameter $meter_id when calling retrieveMeter'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/meters/{meter_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1282,10 +1282,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($meter_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'meter_id' . '}',
+                ObjectSerializer::toPathValue($meter_id),
                 $resourcePath
             );
         }
@@ -1350,40 +1350,40 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProduct
+     * Operation updateMeter
      *
-     * Update product
+     * Update meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  \LomiSDK\Model\MetersUpdate $meters_update meters_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
+     * @return \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error
      */
-    public function updateProduct($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateMeter($meter_id, $meters_update, string $contentType = self::contentTypes['updateMeter'][0])
     {
-        list($response) = $this->updateProductWithHttpInfo($product_id, $products_update, $contentType);
+        list($response) = $this->updateMeterWithHttpInfo($meter_id, $meters_update, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateProductWithHttpInfo
+     * Operation updateMeterWithHttpInfo
      *
-     * Update product
+     * Update meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  \LomiSDK\Model\MetersUpdate $meters_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMeter'] to see the possible values for this operation
      *
      * @throws \LomiSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \LomiSDK\Model\Products|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LomiSDK\Model\Meters|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error|\LomiSDK\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateMeterWithHttpInfo($meter_id, $meters_update, string $contentType = self::contentTypes['updateMeter'][0])
     {
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $request = $this->updateMeterRequest($meter_id, $meters_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1411,7 +1411,7 @@ class ProductsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $request,
                         $response,
                     );
@@ -1457,7 +1457,7 @@ class ProductsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\LomiSDK\Model\Products',
+                '\LomiSDK\Model\Meters',
                 $request,
                 $response,
             );
@@ -1466,7 +1466,7 @@ class ProductsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LomiSDK\Model\Products',
+                        '\LomiSDK\Model\Meters',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1511,20 +1511,20 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsync
+     * Operation updateMeterAsync
      *
-     * Update product
+     * Update meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  \LomiSDK\Model\MetersUpdate $meters_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsync($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateMeterAsync($meter_id, $meters_update, string $contentType = self::contentTypes['updateMeter'][0])
     {
-        return $this->updateProductAsyncWithHttpInfo($product_id, $products_update, $contentType)
+        return $this->updateMeterAsyncWithHttpInfo($meter_id, $meters_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1533,21 +1533,21 @@ class ProductsApi
     }
 
     /**
-     * Operation updateProductAsyncWithHttpInfo
+     * Operation updateMeterAsyncWithHttpInfo
      *
-     * Update product
+     * Update meter
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  \LomiSDK\Model\MetersUpdate $meters_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductAsyncWithHttpInfo($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateMeterAsyncWithHttpInfo($meter_id, $meters_update, string $contentType = self::contentTypes['updateMeter'][0])
     {
-        $returnType = '\LomiSDK\Model\Products';
-        $request = $this->updateProductRequest($product_id, $products_update, $contentType);
+        $returnType = '\LomiSDK\Model\Meters';
+        $request = $this->updateMeterRequest($meter_id, $meters_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1586,34 +1586,34 @@ class ProductsApi
     }
 
     /**
-     * Create request for operation 'updateProduct'
+     * Create request for operation 'updateMeter'
      *
-     * @param  string $product_id Unique identifier for the product (required)
-     * @param  \LomiSDK\Model\ProductsUpdate $products_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProduct'] to see the possible values for this operation
+     * @param  string $meter_id Unique identifier for the meter (required)
+     * @param  \LomiSDK\Model\MetersUpdate $meters_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMeter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateProductRequest($product_id, $products_update, string $contentType = self::contentTypes['updateProduct'][0])
+    public function updateMeterRequest($meter_id, $meters_update, string $contentType = self::contentTypes['updateMeter'][0])
     {
 
-        // verify the required parameter 'product_id' is set
-        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
+        // verify the required parameter 'meter_id' is set
+        if ($meter_id === null || (is_array($meter_id) && count($meter_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_id when calling updateProduct'
+                'Missing the required parameter $meter_id when calling updateMeter'
             );
         }
 
-        // verify the required parameter 'products_update' is set
-        if ($products_update === null || (is_array($products_update) && count($products_update) === 0)) {
+        // verify the required parameter 'meters_update' is set
+        if ($meters_update === null || (is_array($meters_update) && count($meters_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $products_update when calling updateProduct'
+                'Missing the required parameter $meters_update when calling updateMeter'
             );
         }
 
 
-        $resourcePath = '/products/{product_id}';
+        $resourcePath = '/meters/{meter_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1623,10 +1623,10 @@ class ProductsApi
 
 
         // path params
-        if ($product_id !== null) {
+        if ($meter_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product_id' . '}',
-                ObjectSerializer::toPathValue($product_id),
+                '{' . 'meter_id' . '}',
+                ObjectSerializer::toPathValue($meter_id),
                 $resourcePath
             );
         }
@@ -1639,12 +1639,12 @@ class ProductsApi
         );
 
         // for model (json/xml)
-        if (isset($products_update)) {
+        if (isset($meters_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($meters_update));
             } else {
-                $httpBody = $products_update;
+                $httpBody = $meters_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

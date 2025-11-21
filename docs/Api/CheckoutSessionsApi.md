@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\CheckoutSessionsApi
 
-Product catalog - manage one-time and recurring products
+
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createCheckoutSession()**](CheckoutSessionsApi.md#createCheckoutSession) | **POST** /checkout_sessions | Create checkout session |
+| [**deleteCheckoutSession()**](CheckoutSessionsApi.md#deleteCheckoutSession) | **DELETE** /checkout_sessions/{session_id} | Delete checkout session |
+| [**listCheckoutSessions()**](CheckoutSessionsApi.md#listCheckoutSessions) | **GET** /checkout_sessions | List checkout sessions |
+| [**retrieveCheckoutSession()**](CheckoutSessionsApi.md#retrieveCheckoutSession) | **GET** /checkout_sessions/{session_id} | Retrieve checkout session |
+| [**updateCheckoutSession()**](CheckoutSessionsApi.md#updateCheckoutSession) | **PATCH** /checkout_sessions/{session_id} | Update checkout session |
 
 
-## `createProduct()`
+## `createCheckoutSession()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createCheckoutSession($checkout_sessions_create): \LomiSDK\Model\CheckoutSessions
 ```
 
-Create product
+Create checkout session
 
-Product catalog - manage one-time and recurring products
+Checkout sessions - create hosted payment pages
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\CheckoutSessionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$checkout_sessions_create = {"amount":15000,"currency_code":"XOF","product_id":"prod_1234567890abcdef","success_url":"https://example.com/success","cancel_url":"https://example.com/cancel","customer_email":"customer@example.com"}; // \LomiSDK\Model\CheckoutSessionsCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createCheckoutSession($checkout_sessions_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->createCheckoutSession: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **checkout_sessions_create** | [**\LomiSDK\Model\CheckoutSessionsCreate**](../Model/CheckoutSessionsCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\CheckoutSessions**](../Model/CheckoutSessions.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deleteCheckoutSession()`
 
 ```php
-deleteProduct($product_id)
+deleteCheckoutSession($session_id)
 ```
 
-Delete product
+Delete checkout session
 
-Delete a specific product. This action cannot be undone.
+Delete a specific checkout session. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\CheckoutSessionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$session_id = 'session_id_example'; // string | Unique identifier for the checkout session
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deleteCheckoutSession($session_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->deleteCheckoutSession: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **session_id** | **string**| Unique identifier for the checkout session | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listCheckoutSessions()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listCheckoutSessions($limit, $offset, $sort): \LomiSDK\Model\ListCheckoutSessions200Response
 ```
 
-List products
+List checkout sessions
 
-Product catalog - manage one-time and recurring products
+Checkout sessions - create hosted payment pages
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\CheckoutSessionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listCheckoutSessions($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->listCheckoutSessions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListCheckoutSessions200Response**](../Model/ListCheckoutSessions200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrieveCheckoutSession()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrieveCheckoutSession($session_id): \LomiSDK\Model\CheckoutSessions
 ```
 
-Retrieve product
+Retrieve checkout session
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific checkout session by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\CheckoutSessionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$session_id = 'session_id_example'; // string | Unique identifier for the checkout session
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrieveCheckoutSession($session_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->retrieveCheckoutSession: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **session_id** | **string**| Unique identifier for the checkout session | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\CheckoutSessions**](../Model/CheckoutSessions.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updateCheckoutSession()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updateCheckoutSession($session_id, $checkout_sessions_update): \LomiSDK\Model\CheckoutSessions
 ```
 
-Update product
+Update checkout session
 
-Update a specific product. Only provided fields will be updated.
+Update a specific checkout session. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\CheckoutSessionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$session_id = 'session_id_example'; // string | Unique identifier for the checkout session
+$checkout_sessions_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}}; // \LomiSDK\Model\CheckoutSessionsUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updateCheckoutSession($session_id, $checkout_sessions_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CheckoutSessionsApi->updateCheckoutSession: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **session_id** | **string**| Unique identifier for the checkout session | |
+| **checkout_sessions_update** | [**\LomiSDK\Model\CheckoutSessionsUpdate**](../Model/CheckoutSessionsUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\CheckoutSessions**](../Model/CheckoutSessions.md)
 
 ### Authorization
 

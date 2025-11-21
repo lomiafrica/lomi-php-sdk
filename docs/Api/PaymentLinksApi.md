@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\PaymentLinksApi
 
-Product catalog - manage one-time and recurring products
+
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createPaymentLink()**](PaymentLinksApi.md#createPaymentLink) | **POST** /payment_links | Create payment link |
+| [**deletePaymentLink()**](PaymentLinksApi.md#deletePaymentLink) | **DELETE** /payment_links/{link_id} | Delete payment link |
+| [**listPaymentLinks()**](PaymentLinksApi.md#listPaymentLinks) | **GET** /payment_links | List payment links |
+| [**retrievePaymentLink()**](PaymentLinksApi.md#retrievePaymentLink) | **GET** /payment_links/{link_id} | Retrieve payment link |
+| [**updatePaymentLink()**](PaymentLinksApi.md#updatePaymentLink) | **PATCH** /payment_links/{link_id} | Update payment link |
 
 
-## `createProduct()`
+## `createPaymentLink()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createPaymentLink($payment_links_create): \LomiSDK\Model\PaymentLinks
 ```
 
-Create product
+Create payment link
 
-Product catalog - manage one-time and recurring products
+Payment links - shareable payment URLs
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentLinksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$payment_links_create = {"title":"Premium Membership","amount":50000,"currency_code":"XOF","description":"Annual premium membership","product_id":"prod_1234567890abcdef"}; // \LomiSDK\Model\PaymentLinksCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createPaymentLink($payment_links_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentLinksApi->createPaymentLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **payment_links_create** | [**\LomiSDK\Model\PaymentLinksCreate**](../Model/PaymentLinksCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentLinks**](../Model/PaymentLinks.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deletePaymentLink()`
 
 ```php
-deleteProduct($product_id)
+deletePaymentLink($link_id)
 ```
 
-Delete product
+Delete payment link
 
-Delete a specific product. This action cannot be undone.
+Delete a specific payment link. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentLinksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$link_id = 'link_id_example'; // string | Unique identifier for the payment link
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deletePaymentLink($link_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentLinksApi->deletePaymentLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **link_id** | **string**| Unique identifier for the payment link | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listPaymentLinks()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listPaymentLinks($limit, $offset, $sort): \LomiSDK\Model\ListPaymentLinks200Response
 ```
 
-List products
+List payment links
 
-Product catalog - manage one-time and recurring products
+Payment links - shareable payment URLs
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentLinksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listPaymentLinks($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentLinksApi->listPaymentLinks: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListPaymentLinks200Response**](../Model/ListPaymentLinks200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrievePaymentLink()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrievePaymentLink($link_id): \LomiSDK\Model\PaymentLinks
 ```
 
-Retrieve product
+Retrieve payment link
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific payment link by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentLinksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$link_id = 'link_id_example'; // string | Unique identifier for the payment link
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrievePaymentLink($link_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentLinksApi->retrievePaymentLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **link_id** | **string**| Unique identifier for the payment link | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentLinks**](../Model/PaymentLinks.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updatePaymentLink()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updatePaymentLink($link_id, $payment_links_update): \LomiSDK\Model\PaymentLinks
 ```
 
-Update product
+Update payment link
 
-Update a specific product. Only provided fields will be updated.
+Update a specific payment link. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\PaymentLinksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$link_id = 'link_id_example'; // string | Unique identifier for the payment link
+$payment_links_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.240Z","updated_reason":"Administrative update"}}; // \LomiSDK\Model\PaymentLinksUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updatePaymentLink($link_id, $payment_links_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentLinksApi->updatePaymentLink: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **link_id** | **string**| Unique identifier for the payment link | |
+| **payment_links_update** | [**\LomiSDK\Model\PaymentLinksUpdate**](../Model/PaymentLinksUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\PaymentLinks**](../Model/PaymentLinks.md)
 
 ### Authorization
 

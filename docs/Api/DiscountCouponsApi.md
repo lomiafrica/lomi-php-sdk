@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\DiscountCouponsApi
 
-Product catalog - manage one-time and recurring products
+
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createDiscountCoupon()**](DiscountCouponsApi.md#createDiscountCoupon) | **POST** /discount_coupons | Create discount coupon |
+| [**deleteDiscountCoupon()**](DiscountCouponsApi.md#deleteDiscountCoupon) | **DELETE** /discount_coupons/{coupon_id} | Delete discount coupon |
+| [**listDiscountCoupons()**](DiscountCouponsApi.md#listDiscountCoupons) | **GET** /discount_coupons | List discount coupons |
+| [**retrieveDiscountCoupon()**](DiscountCouponsApi.md#retrieveDiscountCoupon) | **GET** /discount_coupons/{coupon_id} | Retrieve discount coupon |
+| [**updateDiscountCoupon()**](DiscountCouponsApi.md#updateDiscountCoupon) | **PATCH** /discount_coupons/{coupon_id} | Update discount coupon |
 
 
-## `createProduct()`
+## `createDiscountCoupon()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createDiscountCoupon($discount_coupons_create): \LomiSDK\Model\DiscountCoupons
 ```
 
-Create product
+Create discount coupon
 
-Product catalog - manage one-time and recurring products
+Discount coupons - create and manage promotional codes
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\DiscountCouponsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$discount_coupons_create = {"code":"WELCOME2024","discount_type":"percentage","discount_percentage":20,"max_uses":100,"is_active":true,"expires_at":"2024-12-31T23:59:59Z","description":"Welcome discount for new customers"}; // \LomiSDK\Model\DiscountCouponsCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createDiscountCoupon($discount_coupons_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DiscountCouponsApi->createDiscountCoupon: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **discount_coupons_create** | [**\LomiSDK\Model\DiscountCouponsCreate**](../Model/DiscountCouponsCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\DiscountCoupons**](../Model/DiscountCoupons.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deleteDiscountCoupon()`
 
 ```php
-deleteProduct($product_id)
+deleteDiscountCoupon($coupon_id)
 ```
 
-Delete product
+Delete discount coupon
 
-Delete a specific product. This action cannot be undone.
+Delete a specific discount coupon. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\DiscountCouponsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$coupon_id = 'coupon_id_example'; // string | Unique identifier for the discount coupon
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deleteDiscountCoupon($coupon_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DiscountCouponsApi->deleteDiscountCoupon: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **coupon_id** | **string**| Unique identifier for the discount coupon | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listDiscountCoupons()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listDiscountCoupons($limit, $offset, $sort): \LomiSDK\Model\ListDiscountCoupons200Response
 ```
 
-List products
+List discount coupons
 
-Product catalog - manage one-time and recurring products
+Discount coupons - create and manage promotional codes
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\DiscountCouponsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listDiscountCoupons($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DiscountCouponsApi->listDiscountCoupons: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListDiscountCoupons200Response**](../Model/ListDiscountCoupons200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrieveDiscountCoupon()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrieveDiscountCoupon($coupon_id): \LomiSDK\Model\DiscountCoupons
 ```
 
-Retrieve product
+Retrieve discount coupon
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific discount coupon by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\DiscountCouponsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$coupon_id = 'coupon_id_example'; // string | Unique identifier for the discount coupon
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrieveDiscountCoupon($coupon_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DiscountCouponsApi->retrieveDiscountCoupon: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **coupon_id** | **string**| Unique identifier for the discount coupon | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\DiscountCoupons**](../Model/DiscountCoupons.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updateDiscountCoupon()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updateDiscountCoupon($coupon_id, $discount_coupons_update): \LomiSDK\Model\DiscountCoupons
 ```
 
-Update product
+Update discount coupon
 
-Update a specific product. Only provided fields will be updated.
+Update a specific discount coupon. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\DiscountCouponsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$coupon_id = 'coupon_id_example'; // string | Unique identifier for the discount coupon
+$discount_coupons_update = {"is_active":false,"max_uses":50}; // \LomiSDK\Model\DiscountCouponsUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updateDiscountCoupon($coupon_id, $discount_coupons_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DiscountCouponsApi->updateDiscountCoupon: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **coupon_id** | **string**| Unique identifier for the discount coupon | |
+| **discount_coupons_update** | [**\LomiSDK\Model\DiscountCouponsUpdate**](../Model/DiscountCouponsUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\DiscountCoupons**](../Model/DiscountCoupons.md)
 
 ### Authorization
 

@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\RefundsApi
 
-Product catalog - manage one-time and recurring products
+Refund management - process and track refunds
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createRefund()**](RefundsApi.md#createRefund) | **POST** /refunds | Create refund |
+| [**deleteRefund()**](RefundsApi.md#deleteRefund) | **DELETE** /refunds/{refund_id} | Delete refund |
+| [**listRefunds()**](RefundsApi.md#listRefunds) | **GET** /refunds | List refunds |
+| [**retrieveRefund()**](RefundsApi.md#retrieveRefund) | **GET** /refunds/{refund_id} | Retrieve refund |
+| [**updateRefund()**](RefundsApi.md#updateRefund) | **PATCH** /refunds/{refund_id} | Update refund |
 
 
-## `createProduct()`
+## `createRefund()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createRefund($refunds_create): \LomiSDK\Model\Refunds
 ```
 
-Create product
+Create refund
 
-Product catalog - manage one-time and recurring products
+Refund management - process and track refunds
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\RefundsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$refunds_create = {"name":"Sample refund","description":"Example refund object"}; // \LomiSDK\Model\RefundsCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createRefund($refunds_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->createRefund: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **refunds_create** | [**\LomiSDK\Model\RefundsCreate**](../Model/RefundsCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\Refunds**](../Model/Refunds.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deleteRefund()`
 
 ```php
-deleteProduct($product_id)
+deleteRefund($refund_id)
 ```
 
-Delete product
+Delete refund
 
-Delete a specific product. This action cannot be undone.
+Delete a specific refund. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\RefundsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$refund_id = 'refund_id_example'; // string | Unique identifier for the refund
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deleteRefund($refund_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->deleteRefund: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **refund_id** | **string**| Unique identifier for the refund | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listRefunds()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listRefunds($limit, $offset, $sort): \LomiSDK\Model\ListRefunds200Response
 ```
 
-List products
+List refunds
 
-Product catalog - manage one-time and recurring products
+Refund management - process and track refunds
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\RefundsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listRefunds($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->listRefunds: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListRefunds200Response**](../Model/ListRefunds200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrieveRefund()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrieveRefund($refund_id): \LomiSDK\Model\Refunds
 ```
 
-Retrieve product
+Retrieve refund
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific refund by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\RefundsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$refund_id = 'refund_id_example'; // string | Unique identifier for the refund
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrieveRefund($refund_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->retrieveRefund: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **refund_id** | **string**| Unique identifier for the refund | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\Refunds**](../Model/Refunds.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updateRefund()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updateRefund($refund_id, $refunds_update): \LomiSDK\Model\Refunds
 ```
 
-Update product
+Update refund
 
-Update a specific product. Only provided fields will be updated.
+Update a specific refund. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\RefundsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$refund_id = 'refund_id_example'; // string | Unique identifier for the refund
+$refunds_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.239Z","updated_reason":"Administrative update"}}; // \LomiSDK\Model\RefundsUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updateRefund($refund_id, $refunds_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RefundsApi->updateRefund: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **refund_id** | **string**| Unique identifier for the refund | |
+| **refunds_update** | [**\LomiSDK\Model\RefundsUpdate**](../Model/RefundsUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\Refunds**](../Model/Refunds.md)
 
 ### Authorization
 

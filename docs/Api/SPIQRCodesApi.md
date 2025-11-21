@@ -1,27 +1,27 @@
-# LomiSDK\ProductsApi
+# LomiSDK\SPIQRCodesApi
 
-Product catalog - manage one-time and recurring products
+
 
 All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProduct()**](ProductsApi.md#createProduct) | **POST** /products | Create product |
-| [**deleteProduct()**](ProductsApi.md#deleteProduct) | **DELETE** /products/{product_id} | Delete product |
-| [**listProducts()**](ProductsApi.md#listProducts) | **GET** /products | List products |
-| [**retrieveProduct()**](ProductsApi.md#retrieveProduct) | **GET** /products/{product_id} | Retrieve product |
-| [**updateProduct()**](ProductsApi.md#updateProduct) | **PATCH** /products/{product_id} | Update product |
+| [**createSpiQrCode()**](SPIQRCodesApi.md#createSpiQrCode) | **POST** /spi_qr_codes | Create spi qr code |
+| [**deleteSpiQrCode()**](SPIQRCodesApi.md#deleteSpiQrCode) | **DELETE** /spi_qr_codes/{qr_code_id} | Delete spi qr code |
+| [**listSpiQrCodes()**](SPIQRCodesApi.md#listSpiQrCodes) | **GET** /spi_qr_codes | List spi qr codes |
+| [**retrieveSpiQrCode()**](SPIQRCodesApi.md#retrieveSpiQrCode) | **GET** /spi_qr_codes/{qr_code_id} | Retrieve spi qr code |
+| [**updateSpiQrCode()**](SPIQRCodesApi.md#updateSpiQrCode) | **PATCH** /spi_qr_codes/{qr_code_id} | Update spi qr code |
 
 
-## `createProduct()`
+## `createSpiQrCode()`
 
 ```php
-createProduct($products_create): \LomiSDK\Model\Products
+createSpiQrCode($spi_qr_codes_create): \LomiSDK\Model\SpiQrCodes
 ```
 
-Create product
+Create spi qr code
 
-Product catalog - manage one-time and recurring products
+SPI QR codes - generate and manage SPI QR payment codes
 
 ### Example
 
@@ -36,19 +36,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\SPIQRCodesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$products_create = {"name":"Premium Subscription","description":"Monthly premium access with all features","product_type":"recurring","is_active":true,"metadata":{"features":["analytics","api_access","priority_support"]}}; // \LomiSDK\Model\ProductsCreate
+$spi_qr_codes_create = {"amount":5000,"currency_code":"XOF","description":"QR code for in-store payment","expires_at":"2024-12-31T23:59:59Z"}; // \LomiSDK\Model\SpiQrCodesCreate
 
 try {
-    $result = $apiInstance->createProduct($products_create);
+    $result = $apiInstance->createSpiQrCode($spi_qr_codes_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->createProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SPIQRCodesApi->createSpiQrCode: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **products_create** | [**\LomiSDK\Model\ProductsCreate**](../Model/ProductsCreate.md)|  | |
+| **spi_qr_codes_create** | [**\LomiSDK\Model\SpiQrCodesCreate**](../Model/SpiQrCodesCreate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\SpiQrCodes**](../Model/SpiQrCodes.md)
 
 ### Authorization
 
@@ -75,15 +75,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteProduct()`
+## `deleteSpiQrCode()`
 
 ```php
-deleteProduct($product_id)
+deleteSpiQrCode($qr_code_id)
 ```
 
-Delete product
+Delete spi qr code
 
-Delete a specific product. This action cannot be undone.
+Delete a specific spi qr code. This action cannot be undone.
 
 ### Example
 
@@ -98,18 +98,18 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\SPIQRCodesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$qr_code_id = 'qr_code_id_example'; // string | Unique identifier for the spi qr code
 
 try {
-    $apiInstance->deleteProduct($product_id);
+    $apiInstance->deleteSpiQrCode($qr_code_id);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->deleteProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SPIQRCodesApi->deleteSpiQrCode: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **qr_code_id** | **string**| Unique identifier for the spi qr code | |
 
 ### Return type
 
@@ -136,15 +136,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listProducts()`
+## `listSpiQrCodes()`
 
 ```php
-listProducts($limit, $offset, $sort): \LomiSDK\Model\ListProducts200Response
+listSpiQrCodes($limit, $offset, $sort): \LomiSDK\Model\ListSpiQrCodes200Response
 ```
 
-List products
+List spi qr codes
 
-Product catalog - manage one-time and recurring products
+SPI QR codes - generate and manage SPI QR payment codes
 
 ### Example
 
@@ -159,7 +159,7 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\SPIQRCodesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -170,10 +170,10 @@ $offset = 0; // int | Number of items to skip for pagination
 $sort = created_at:desc; // string | Sort order. Format: `field:direction` (e.g., `created_at:desc`)
 
 try {
-    $result = $apiInstance->listProducts($limit, $offset, $sort);
+    $result = $apiInstance->listSpiQrCodes($limit, $offset, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SPIQRCodesApi->listSpiQrCodes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -187,7 +187,7 @@ try {
 
 ### Return type
 
-[**\LomiSDK\Model\ListProducts200Response**](../Model/ListProducts200Response.md)
+[**\LomiSDK\Model\ListSpiQrCodes200Response**](../Model/ListSpiQrCodes200Response.md)
 
 ### Authorization
 
@@ -202,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `retrieveProduct()`
+## `retrieveSpiQrCode()`
 
 ```php
-retrieveProduct($product_id): \LomiSDK\Model\Products
+retrieveSpiQrCode($qr_code_id): \LomiSDK\Model\SpiQrCodes
 ```
 
-Retrieve product
+Retrieve spi qr code
 
-Retrieve a specific product by its unique identifier.
+Retrieve a specific spi qr code by its unique identifier.
 
 ### Example
 
@@ -225,19 +225,19 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\SPIQRCodesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
+$qr_code_id = 'qr_code_id_example'; // string | Unique identifier for the spi qr code
 
 try {
-    $result = $apiInstance->retrieveProduct($product_id);
+    $result = $apiInstance->retrieveSpiQrCode($qr_code_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->retrieveProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SPIQRCodesApi->retrieveSpiQrCode: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +245,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
+| **qr_code_id** | **string**| Unique identifier for the spi qr code | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\SpiQrCodes**](../Model/SpiQrCodes.md)
 
 ### Authorization
 
@@ -264,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateProduct()`
+## `updateSpiQrCode()`
 
 ```php
-updateProduct($product_id, $products_update): \LomiSDK\Model\Products
+updateSpiQrCode($qr_code_id, $spi_qr_codes_update): \LomiSDK\Model\SpiQrCodes
 ```
 
-Update product
+Update spi qr code
 
-Update a specific product. Only provided fields will be updated.
+Update a specific spi qr code. Only provided fields will be updated.
 
 ### Example
 
@@ -287,20 +287,20 @@ $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY
 // $config = LomiSDK\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
 
 
-$apiInstance = new LomiSDK\Api\ProductsApi(
+$apiInstance = new LomiSDK\Api\SPIQRCodesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$product_id = 'product_id_example'; // string | Unique identifier for the product
-$products_update = {"name":"Premium Plus Subscription","description":"Enhanced premium access with exclusive features","is_active":true}; // \LomiSDK\Model\ProductsUpdate
+$qr_code_id = 'qr_code_id_example'; // string | Unique identifier for the spi qr code
+$spi_qr_codes_update = {"metadata":{"updated_at":"2025-11-21T13:32:16.241Z","updated_reason":"Administrative update"}}; // \LomiSDK\Model\SpiQrCodesUpdate
 
 try {
-    $result = $apiInstance->updateProduct($product_id, $products_update);
+    $result = $apiInstance->updateSpiQrCode($qr_code_id, $spi_qr_codes_update);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ProductsApi->updateProduct: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SPIQRCodesApi->updateSpiQrCode: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -308,12 +308,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **product_id** | **string**| Unique identifier for the product | |
-| **products_update** | [**\LomiSDK\Model\ProductsUpdate**](../Model/ProductsUpdate.md)|  | |
+| **qr_code_id** | **string**| Unique identifier for the spi qr code | |
+| **spi_qr_codes_update** | [**\LomiSDK\Model\SpiQrCodesUpdate**](../Model/SpiQrCodesUpdate.md)|  | |
 
 ### Return type
 
-[**\LomiSDK\Model\Products**](../Model/Products.md)
+[**\LomiSDK\Model\SpiQrCodes**](../Model/SpiQrCodes.md)
 
 ### Authorization
 
