@@ -79,7 +79,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => 'string',
         'price_id' => 'string',
         'product_id' => 'string',
-        'public_description' => 'string',
+        'description' => 'string',
         'qr_code_data' => 'object',
         'qr_code_type' => 'string',
         'quantity' => 'float',
@@ -119,7 +119,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => 'uuid',
         'price_id' => 'uuid',
         'product_id' => 'uuid',
-        'public_description' => null,
+        'description' => null,
         'qr_code_data' => null,
         'qr_code_type' => null,
         'quantity' => 'double',
@@ -157,7 +157,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => false,
         'price_id' => false,
         'product_id' => false,
-        'public_description' => false,
+        'description' => false,
         'qr_code_data' => false,
         'qr_code_type' => false,
         'quantity' => false,
@@ -275,7 +275,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => 'payment_request_id',
         'price_id' => 'price_id',
         'product_id' => 'product_id',
-        'public_description' => 'public_description',
+        'description' => 'description',
         'qr_code_data' => 'qr_code_data',
         'qr_code_type' => 'qr_code_type',
         'quantity' => 'quantity',
@@ -313,7 +313,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => 'setPaymentRequestId',
         'price_id' => 'setPriceId',
         'product_id' => 'setProductId',
-        'public_description' => 'setPublicDescription',
+        'description' => 'setPublicDescription',
         'qr_code_data' => 'setQrCodeData',
         'qr_code_type' => 'setQrCodeType',
         'quantity' => 'setQuantity',
@@ -351,7 +351,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         'payment_request_id' => 'getPaymentRequestId',
         'price_id' => 'getPriceId',
         'product_id' => 'getProductId',
-        'public_description' => 'getPublicDescription',
+        'description' => 'getPublicDescription',
         'qr_code_data' => 'getQrCodeData',
         'qr_code_type' => 'getQrCodeType',
         'quantity' => 'getQuantity',
@@ -440,7 +440,7 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('payment_request_id', $data ?? [], null);
         $this->setIfExists('price_id', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
-        $this->setIfExists('public_description', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('qr_code_data', $data ?? [], null);
         $this->setIfExists('qr_code_type', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
@@ -1035,28 +1035,28 @@ class CheckoutSessionsUpdate implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets public_description
+     * Gets description
      *
      * @return string|null
      */
     public function getPublicDescription()
     {
-        return $this->container['public_description'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets public_description
+     * Sets description
      *
-     * @param string|null $public_description public_description
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setPublicDescription($public_description)
+    public function setPublicDescription($description)
     {
-        if (is_null($public_description)) {
-            throw new \InvalidArgumentException('non-nullable public_description cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['public_description'] = $public_description;
+        $this->container['description'] = $description;
 
         return $this;
     }

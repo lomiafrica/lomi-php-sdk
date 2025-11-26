@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **price_id** | **string** | Unique identifier (UUID format) | [optional]
 **private_description** | **string** |  | [optional]
 **product_id** | **string** | Unique identifier (UUID format) | [optional]
-**public_description** | **string** |  | [optional]
+**description** | **string** |  | [optional]
 **quantity** | **float** |  | [optional]
 **success_url** | **string** | URL/URI | [optional]
 **title** | **string** |  | [optional]

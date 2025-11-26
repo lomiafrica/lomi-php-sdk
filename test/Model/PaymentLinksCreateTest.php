@@ -243,7 +243,7 @@ class PaymentLinksCreateTest extends TestCase
     }
 
     /**
-     * Test attribute "public_description"
+     * Test attribute "description"
      */
     public function testPropertyPublicDescription()
     {

@@ -77,7 +77,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => 'string',
         'private_description' => 'string',
         'product_id' => 'string',
-        'public_description' => 'string',
+        'description' => 'string',
         'quantity' => 'float',
         'success_url' => 'string',
         'title' => 'string',
@@ -111,7 +111,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => 'uuid',
         'private_description' => null,
         'product_id' => 'uuid',
-        'public_description' => null,
+        'description' => null,
         'quantity' => 'double',
         'success_url' => 'uri',
         'title' => null,
@@ -143,7 +143,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => false,
         'private_description' => false,
         'product_id' => false,
-        'public_description' => false,
+        'description' => false,
         'quantity' => false,
         'success_url' => false,
         'title' => false,
@@ -255,7 +255,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => 'price_id',
         'private_description' => 'private_description',
         'product_id' => 'product_id',
-        'public_description' => 'public_description',
+        'description' => 'description',
         'quantity' => 'quantity',
         'success_url' => 'success_url',
         'title' => 'title',
@@ -287,7 +287,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => 'setPriceId',
         'private_description' => 'setPrivateDescription',
         'product_id' => 'setProductId',
-        'public_description' => 'setPublicDescription',
+        'description' => 'setPublicDescription',
         'quantity' => 'setQuantity',
         'success_url' => 'setSuccessUrl',
         'title' => 'setTitle',
@@ -319,7 +319,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_id' => 'getPriceId',
         'private_description' => 'getPrivateDescription',
         'product_id' => 'getProductId',
-        'public_description' => 'getPublicDescription',
+        'description' => 'getPublicDescription',
         'quantity' => 'getQuantity',
         'success_url' => 'getSuccessUrl',
         'title' => 'getTitle',
@@ -402,7 +402,7 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('price_id', $data ?? [], null);
         $this->setIfExists('private_description', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
-        $this->setIfExists('public_description', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
@@ -939,28 +939,28 @@ class PaymentLinks implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets public_description
+     * Gets description
      *
      * @return string|null
      */
     public function getPublicDescription()
     {
-        return $this->container['public_description'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets public_description
+     * Sets description
      *
-     * @param string|null $public_description public_description
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setPublicDescription($public_description)
+    public function setPublicDescription($description)
     {
-        if (is_null($public_description)) {
-            throw new \InvalidArgumentException('non-nullable public_description cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['public_description'] = $public_description;
+        $this->container['description'] = $description;
 
         return $this;
     }
