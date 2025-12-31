@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allow_coupon_code** | **bool** |  | [optional]
 **allow_quantity** | **bool** |  | [optional]
-**allowed_providers** | **string** |  | [optional]
 **amount** | **float** | Amount in the smallest currency unit (e.g., cents for USD, same for XOF) | [optional]
 **cancel_url** | **string** | URL/URI | [optional]
 **created_at** | **\DateTime** | ISO 8601 datetime | [optional] [readonly]
