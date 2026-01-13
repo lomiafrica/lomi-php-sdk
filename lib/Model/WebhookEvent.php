@@ -44,13 +44,12 @@ class WebhookEvent
     /**
      * Possible values of this enum
      */
-    public const PAYMENT_CREATED = 'PAYMENT_CREATED';
 
+
+    public const PAYMENT_CREATED = 'PAYMENT_CREATED';
     public const PAYMENT_SUCCEEDED = 'PAYMENT_SUCCEEDED';
 
     public const PAYMENT_FAILED = 'PAYMENT_FAILED';
-
-    public const PAYMENT_CANCELED = 'PAYMENT_CANCELED';
 
     public const REFUND_CREATED = 'REFUND_CREATED';
 
@@ -64,10 +63,6 @@ class WebhookEvent
 
     public const SUBSCRIPTION_CANCELED = 'SUBSCRIPTION_CANCELED';
 
-    public const CHECKOUT_COMPLETED = 'CHECKOUT_COMPLETED';
-
-    public const PROVIDER_STATUS_CHANGED = 'PROVIDER_STATUS_CHANGED';
-
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -78,15 +73,12 @@ class WebhookEvent
             self::PAYMENT_CREATED,
             self::PAYMENT_SUCCEEDED,
             self::PAYMENT_FAILED,
-            self::PAYMENT_CANCELED,
             self::REFUND_CREATED,
             self::REFUND_COMPLETED,
             self::REFUND_FAILED,
             self::SUBSCRIPTION_CREATED,
             self::SUBSCRIPTION_RENEWED,
-            self::SUBSCRIPTION_CANCELED,
-            self::CHECKOUT_COMPLETED,
-            self::PROVIDER_STATUS_CHANGED
+            self::SUBSCRIPTION_CANCELED
         ];
     }
 }
