@@ -2,7 +2,7 @@
 
 Events - view account activity events
 
-All URIs are relative to https://api.lomi.africa/v1, except if the operation defines another base path.
+All URIs are relative to https://api.lomi.africa, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
