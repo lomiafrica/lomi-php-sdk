@@ -13,6 +13,7 @@ class CheckoutSessions
     public float $amount;
     public ?string $cancelUrl;
     public string $checkoutSessionId;
+    public ?string $checkoutUrl;
     public string $createdAt;
     public ?string $createdBy;
     public string $currencyCode;
@@ -52,6 +53,7 @@ class CheckoutSessions
         $this->amount = $data['amount'] ?? null;
         $this->cancelUrl = $data['cancel_url'] ?? null;
         $this->checkoutSessionId = $data['checkout_session_id'] ?? null;
+        $this->checkoutUrl = $data['checkout_url'] ?? null;
         $this->createdAt = $data['created_at'] ?? null;
         $this->createdBy = $data['created_by'] ?? null;
         $this->currencyCode = $data['currency_code'] ?? null;
