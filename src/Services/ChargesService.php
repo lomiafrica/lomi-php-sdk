@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (PayoutsService)
+ * Public merchant API (ChargesService)
  */
-class PayoutsService
+class ChargesService
 {
     private LomiClient $client;
 
@@ -17,11 +17,11 @@ class PayoutsService
     }
 
     /**
-     * Lancer un virement Wave
+     * Lancer un encaissement direct Wave
      */
-    public function createWavePayout(): array
+    public function createWaveCharge(): array
     {
-        $path = '/payout/wave';
+        $path = '/charge/wave';
 
         return $this->client->request('POST', $path);
     }

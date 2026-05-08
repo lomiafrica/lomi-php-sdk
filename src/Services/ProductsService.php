@@ -3,55 +3,75 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Products;
 
+/**
+ * Public merchant API (ProductsService)
+ */
 class ProductsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List products
-     * @return \Lomi\Models\Products[]
+     * Ajouter un prix à un produit
      */
-    public function list(array $params = []): array
+    public function addPrice(string $id): array
     {
-        $response = $this->client->request('GET', '/products', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Products($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single products
-     */
-    public function get(string $id): \Lomi\Models\Products
-    {
-        $response = $this->client->request('GET', "/products/{$id}");
-        return new \Lomi\Models\Products($response);
+        $path = '/products/{id}/prices';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path);
     }
 
-    
+
     /**
-     * Create a new products
+     * Créer un produit
      */
-    public function create(array $data): \Lomi\Models\Products
+    public function create(): array
     {
-        $response = $this->client->request('POST', "/products", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\Products($response);
+        $path = '/products';
+
+        return $this->client->request('POST', $path);
     }
-    
-    
+
+
+    /**
+     * Obtenir un produit par ID
+     */
+    public function get(string $id): array
+    {
+        $path = '/products/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Lister les produits
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/products';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Définir le prix par défaut
+     */
+    public function setDefaultPrice(string $id, string $priceId): array
+    {
+        $path = '/products/{id}/prices/{priceId}/set-default';
+        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{priceId}', $priceId, $path);
+
+        return $this->client->request('POST', $path);
+    }
 
 }

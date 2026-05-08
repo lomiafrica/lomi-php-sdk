@@ -3,55 +3,50 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\CheckoutSessions;
 
+/**
+ * Public merchant API (CheckoutSessionsService)
+ */
 class CheckoutSessionsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List checkout_sessions
-     * @return \Lomi\Models\CheckoutSessions[]
+     * Créer une session de paiement
      */
-    public function list(array $params = []): array
+    public function create(?array $body = null): array
     {
-        $response = $this->client->request('GET', '/checkout-sessions', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\CheckoutSessions($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single checkout_sessions
-     */
-    public function get(string $id): \Lomi\Models\CheckoutSessions
-    {
-        $response = $this->client->request('GET', "/checkout-sessions/{$id}");
-        return new \Lomi\Models\CheckoutSessions($response);
+        $path = '/checkout-sessions';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
-    
+
     /**
-     * Create a new checkout_sessions
+     * Obtenir une session de paiement par ID
      */
-    public function create(array $data): \Lomi\Models\CheckoutSessions
+    public function get(string $id): array
     {
-        $response = $this->client->request('POST', "/checkout-sessions", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\CheckoutSessions($response);
+        $path = '/checkout-sessions/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
-    
-    
+
+
+    /**
+     * Lister les sessions de paiement
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/checkout-sessions';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
 
 }

@@ -3,45 +3,50 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Organizations;
 
+/**
+ * Public merchant API (OrganizationsService)
+ */
 class OrganizationsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List organizations
-     * @return \Lomi\Models\Organizations[]
+     * Organisation par ID
      */
-    public function list(array $params = []): array
+    public function get(string $id): array
     {
-        $response = $this->client->request('GET', '/organizations', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Organizations($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single organizations
-     */
-    public function get(string $id): \Lomi\Models\Organizations
-    {
-        $response = $this->client->request('GET', "/organizations/{$id}");
-        return new \Lomi\Models\Organizations($response);
+        $path = '/organizations/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
-    
-    
-    
+
+    /**
+     * Indicateurs de l\'organisation
+     */
+    public function getMetrics(): array
+    {
+        $path = '/organizations/metrics';
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Détails de l\'organisation
+     */
+    public function list(): array
+    {
+        $path = '/organizations';
+
+        return $this->client->request('GET', $path);
+    }
 
 }

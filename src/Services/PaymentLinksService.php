@@ -3,55 +3,50 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\PaymentLinks;
 
+/**
+ * Public merchant API (PaymentLinksService)
+ */
 class PaymentLinksService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List payment_links
-     * @return \Lomi\Models\PaymentLinks[]
+     * Créer un lien de paiement
      */
-    public function list(array $params = []): array
+    public function create(?array $body = null): array
     {
-        $response = $this->client->request('GET', '/payment-links', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\PaymentLinks($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single payment_links
-     */
-    public function get(string $id): \Lomi\Models\PaymentLinks
-    {
-        $response = $this->client->request('GET', "/payment-links/{$id}");
-        return new \Lomi\Models\PaymentLinks($response);
+        $path = '/payment-links';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
-    
+
     /**
-     * Create a new payment_links
+     * Obtenir un lien de paiement par ID
      */
-    public function create(array $data): \Lomi\Models\PaymentLinks
+    public function get(string $id): array
     {
-        $response = $this->client->request('POST', "/payment-links", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\PaymentLinks($response);
+        $path = '/payment-links/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
-    
-    
+
+
+    /**
+     * Lister les liens de paiement
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/payment-links';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
 
 }

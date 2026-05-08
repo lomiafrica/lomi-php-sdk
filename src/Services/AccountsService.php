@@ -3,45 +3,73 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Accounts;
 
+/**
+ * Public merchant API (AccountsService)
+ */
 class AccountsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List accounts
-     * @return \Lomi\Models\Accounts[]
+     * Vérifier le solde disponible
      */
-    public function list(array $params = []): array
+    public function checkBalance(string $currency): array
     {
-        $response = $this->client->request('GET', '/accounts', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Accounts($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single accounts
-     */
-    public function get(string $id): \Lomi\Models\Accounts
-    {
-        $response = $this->client->request('GET', "/accounts/{$id}");
-        return new \Lomi\Models\Accounts($response);
+        $path = '/accounts/balance/check/{currency}';
+        $path = str_replace('{currency}', $currency, $path);
+
+        return $this->client->request('GET', $path);
     }
 
-    
-    
-    
+
+    /**
+     * Obtenir un compte par ID
+     */
+    public function get(string $id): array
+    {
+        $path = '/accounts/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Solde du compte
+     */
+    public function getBalance(?array $params = null): array
+    {
+        $path = '/accounts/balance';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Détail du solde
+     */
+    public function getBalanceBreakdown(?array $params = null): array
+    {
+        $path = '/accounts/balance/breakdown';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Lister les comptes
+     */
+    public function list(): array
+    {
+        $path = '/accounts';
+
+        return $this->client->request('GET', $path);
+    }
 
 }

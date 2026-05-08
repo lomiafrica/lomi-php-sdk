@@ -3,55 +3,50 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\PaymentRequests;
 
+/**
+ * Public merchant API (PaymentRequestsService)
+ */
 class PaymentRequestsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List payment_requests
-     * @return \Lomi\Models\PaymentRequests[]
+     * Créer une demande de paiement
      */
-    public function list(array $params = []): array
+    public function create(?array $body = null): array
     {
-        $response = $this->client->request('GET', '/payment-requests', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\PaymentRequests($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single payment_requests
-     */
-    public function get(string $id): \Lomi\Models\PaymentRequests
-    {
-        $response = $this->client->request('GET', "/payment-requests/{$id}");
-        return new \Lomi\Models\PaymentRequests($response);
+        $path = '/payment-requests';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
-    
+
     /**
-     * Create a new payment_requests
+     * Obtenir une demande de paiement par ID
      */
-    public function create(array $data): \Lomi\Models\PaymentRequests
+    public function get(string $id): array
     {
-        $response = $this->client->request('POST', "/payment-requests", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\PaymentRequests($response);
+        $path = '/payment-requests/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
-    
-    
+
+
+    /**
+     * Lister les demandes de paiement
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/payment-requests';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
 
 }

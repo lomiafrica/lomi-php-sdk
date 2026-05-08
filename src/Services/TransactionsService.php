@@ -3,45 +3,39 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Transactions;
 
+/**
+ * Public merchant API (TransactionsService)
+ */
 class TransactionsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List transactions
-     * @return \Lomi\Models\Transactions[]
+     * Obtenir une transaction par ID
      */
-    public function list(array $params = []): array
+    public function get(string $id): array
     {
-        $response = $this->client->request('GET', '/transactions', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Transactions($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single transactions
-     */
-    public function get(string $id): \Lomi\Models\Transactions
-    {
-        $response = $this->client->request('GET', "/transactions/{$id}");
-        return new \Lomi\Models\Transactions($response);
+        $path = '/transactions/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
-    
-    
-    
+
+    /**
+     * Lister les transactions
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/transactions';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
 
 }

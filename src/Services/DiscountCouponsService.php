@@ -3,55 +3,62 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\DiscountCoupons;
 
+/**
+ * Public merchant API (DiscountCouponsService)
+ */
 class DiscountCouponsService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List discount_coupons
-     * @return \Lomi\Models\DiscountCoupons[]
+     * Créer un coupon
      */
-    public function list(array $params = []): array
+    public function create(): array
     {
-        $response = $this->client->request('GET', '/discount-coupons', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\DiscountCoupons($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single discount_coupons
-     */
-    public function get(string $id): \Lomi\Models\DiscountCoupons
-    {
-        $response = $this->client->request('GET', "/discount-coupons/{$id}");
-        return new \Lomi\Models\DiscountCoupons($response);
+        $path = '/discount-coupons';
+
+        return $this->client->request('POST', $path);
     }
 
-    
+
     /**
-     * Create a new discount_coupons
+     * Obtenir un coupon par ID
      */
-    public function create(array $data): \Lomi\Models\DiscountCoupons
+    public function get(string $id): array
     {
-        $response = $this->client->request('POST', "/discount-coupons", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\DiscountCoupons($response);
+        $path = '/discount-coupons/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
-    
-    
+
+
+    /**
+     * Indicateurs de performance du coupon
+     */
+    public function getPerformance(string $id): array
+    {
+        $path = '/discount-coupons/{id}/performance';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Lister les coupons
+     */
+    public function list(): array
+    {
+        $path = '/discount-coupons';
+
+        return $this->client->request('GET', $path);
+    }
 
 }

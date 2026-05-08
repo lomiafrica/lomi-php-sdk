@@ -3,65 +3,86 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Customers;
 
+/**
+ * Public merchant API (CustomersService)
+ */
 class CustomersService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List customers
-     * @return \Lomi\Models\Customers[]
+     * Créer un client
      */
-    public function list(array $params = []): array
+    public function create(?array $body = null): array
     {
-        $response = $this->client->request('GET', '/customers', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Customers($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single customers
-     */
-    public function get(string $id): \Lomi\Models\Customers
-    {
-        $response = $this->client->request('GET', "/customers/{$id}");
-        return new \Lomi\Models\Customers($response);
+        $path = '/customers';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
-    
+
     /**
-     * Create a new customers
+     * Supprimer un client
      */
-    public function create(array $data): \Lomi\Models\Customers
+    public function delete(string $id): array
     {
-        $response = $this->client->request('POST', "/customers", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\Customers($response);
+        $path = '/customers/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('DELETE', $path);
     }
-    
-    
+
+
     /**
-     * Update a customers
+     * Obtenir un client par ID
      */
-    public function update(string $id, array $data): \Lomi\Models\Customers
+    public function get(string $id): array
     {
-        $response = $this->client->request('PATCH', "/customers/{$id}", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\Customers($response);
+        $path = '/customers/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Transactions du client
+     */
+    public function getTransactions(string $id): array
+    {
+        $path = '/customers/{id}/transactions';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Lister les clients
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/customers';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Mettre à jour un client
+     */
+    public function update(string $id, ?array $body = null): array
+    {
+        $path = '/customers/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }

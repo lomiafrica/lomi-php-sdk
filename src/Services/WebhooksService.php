@@ -3,55 +3,51 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
-use Lomi\Models\Webhooks;
 
+/**
+ * Public merchant API (WebhooksService)
+ */
 class WebhooksService
 {
     private LomiClient $client;
-    
+
     public function __construct(LomiClient $client)
     {
         $this->client = $client;
     }
-    
-    
+
     /**
-     * List webhooks
-     * @return \Lomi\Models\Webhooks[]
+     * Obtenir un webhook par ID
      */
-    public function list(array $params = []): array
+    public function get(string $id): array
     {
-        $response = $this->client->request('GET', '/webhooks', [
-            'query' => $params
-        ]);
-        
-        return array_map(function ($item) {
-            return new \Lomi\Models\Webhooks($item);
-        }, $response);
-    }
-    
-    
-    /**
-     * Get a single webhooks
-     */
-    public function get(string $id): \Lomi\Models\Webhooks
-    {
-        $response = $this->client->request('GET', "/webhooks/{$id}");
-        return new \Lomi\Models\Webhooks($response);
+        $path = '/webhooks/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
-    
-    
-    
+
     /**
-     * Update a webhooks
+     * Lister les webhooks
      */
-    public function update(string $id, array $data): \Lomi\Models\Webhooks
+    public function list(): array
     {
-        $response = $this->client->request('PATCH', "/webhooks/{$id}", [
-            'json' => $data
-        ]);
-        return new \Lomi\Models\Webhooks($response);
+        $path = '/webhooks';
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Mettre à jour un webhook
+     */
+    public function update(string $id, ?array $body = null): array
+    {
+        $path = '/webhooks/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }
