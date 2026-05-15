@@ -100,8 +100,8 @@ Class | Method | HTTP request | Description
 *DiscountCouponsApi* | [**updateDiscountCoupon**](docs/Api/DiscountCouponsApi.md#updatediscountcoupon) | **PATCH** /discount_coupons/{coupon_id} | Update discount coupon
 *EventsApi* | [**listEvents**](docs/Api/EventsApi.md#listevents) | **GET** /events | List events
 *EventsApi* | [**retrieveEvent**](docs/Api/EventsApi.md#retrieveevent) | **GET** /events/{event_id} | Retrieve event
-*InstallmentPaymentsApi* | [**listInstallmentPayments**](docs/Api/InstallmentPaymentsApi.md#listinstallmentpayments) | **GET** /installment_payments | List installment payments
-*InstallmentPaymentsApi* | [**retrieveInstallmentPayment**](docs/Api/InstallmentPaymentsApi.md#retrieveinstallmentpayment) | **GET** /installment_payments/{payment_id} | Retrieve installment payment
+*InstalmentPaymentsApi* | [**listInstalmentPayments**](docs/Api/InstalmentPaymentsApi.md#listinstalmentpayments) | **GET** /instalment_payments | List instalment payments
+*InstalmentPaymentsApi* | [**retrieveInstalmentPayment**](docs/Api/InstalmentPaymentsApi.md#retrieveinstalmentpayment) | **GET** /instalment_payments/{payment_id} | Retrieve instalment payment
 *MeterBalancesApi* | [**listMeterBalances**](docs/Api/MeterBalancesApi.md#listmeterbalances) | **GET** /meter_balances | List meter balances
 *MeterBalancesApi* | [**retrieveMeterBalance**](docs/Api/MeterBalancesApi.md#retrievemeterbalance) | **GET** /meter_balances/{balance_id} | Retrieve meter balance
 *MetersApi* | [**createMeter**](docs/Api/MetersApi.md#createmeter) | **POST** /meters | Create meter
@@ -189,9 +189,9 @@ Class | Method | HTTP request | Description
 - [EventsCreate](docs/Model/EventsCreate.md)
 - [EventsUpdate](docs/Model/EventsUpdate.md)
 - [Frequency](docs/Model/Frequency.md)
-- [InstallmentPayments](docs/Model/InstallmentPayments.md)
-- [InstallmentPaymentsCreate](docs/Model/InstallmentPaymentsCreate.md)
-- [InstallmentPaymentsUpdate](docs/Model/InstallmentPaymentsUpdate.md)
+- [InstalmentPayments](docs/Model/InstalmentPayments.md)
+- [InstalmentPaymentsCreate](docs/Model/InstalmentPaymentsCreate.md)
+- [InstalmentPaymentsUpdate](docs/Model/InstalmentPaymentsUpdate.md)
 - [InvoiceStatus](docs/Model/InvoiceStatus.md)
 - [ListBeneficiaryPayouts200Response](docs/Model/ListBeneficiaryPayouts200Response.md)
 - [ListCheckoutSessions200Response](docs/Model/ListCheckoutSessions200Response.md)
@@ -200,7 +200,7 @@ Class | Method | HTTP request | Description
 - [ListCustomers200ResponsePagination](docs/Model/ListCustomers200ResponsePagination.md)
 - [ListDiscountCoupons200Response](docs/Model/ListDiscountCoupons200Response.md)
 - [ListEvents200Response](docs/Model/ListEvents200Response.md)
-- [ListInstallmentPayments200Response](docs/Model/ListInstallmentPayments200Response.md)
+- [ListInstalmentPayments200Response](docs/Model/ListInstalmentPayments200Response.md)
 - [ListMeterBalances200Response](docs/Model/ListMeterBalances200Response.md)
 - [ListMeters200Response](docs/Model/ListMeters200Response.md)
 - [ListPaymentLinks200Response](docs/Model/ListPaymentLinks200Response.md)
