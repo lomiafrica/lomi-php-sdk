@@ -28,6 +28,18 @@ class CustomersService
 
 
     /**
+     * Créer une session de lancement du portail client
+     */
+    public function createPortalLaunchSession(string $id, ?array $body = null): array
+    {
+        $path = '/customers/{id}/portal-launch-session';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
      * Supprimer un client
      */
     public function delete(string $id): array
@@ -48,6 +60,18 @@ class CustomersService
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Hosted customer portal audit
+     */
+    public function getPortalAudit(string $id, ?array $params = null): array
+    {
+        $path = '/customers/{id}/portal-audit';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
 

@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (PayoutsService)
+ * Public merchant API (ProvidersService)
  */
-class PayoutsService
+class ProvidersService
 {
     private LomiClient $client;
 
@@ -17,22 +17,11 @@ class PayoutsService
     }
 
     /**
-     * Lancer un virement Wave
-     */
-    public function createWavePayout(): array
-    {
-        $path = '/payout/wave';
-
-        return $this->client->request('POST', $path);
-    }
-
-
-    /**
-     * Lister les virements
+     * List payment providers
      */
     public function list(?array $params = null): array
     {
-        $path = '/payouts';
+        $path = '/providers';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }

@@ -17,13 +17,36 @@ class RefundsService
     }
 
     /**
-     * Lancer un remboursement Wave
+     * Créer un remboursement
      */
-    public function createWaveRefund(): array
+    public function create(): array
     {
-        $path = '/refund/wave';
+        $path = '/refunds';
 
         return $this->client->request('POST', $path);
+    }
+
+
+    /**
+     * Obtenir un remboursement
+     */
+    public function get(string $id): array
+    {
+        $path = '/refunds/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Lister les remboursements
+     */
+    public function list(?array $params = null): array
+    {
+        $path = '/refunds';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
 }

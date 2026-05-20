@@ -62,4 +62,16 @@ class SubscriptionsService
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
+
+    /**
+     * Mettre à jour un abonnement
+     */
+    public function update(string $id): array
+    {
+        $path = '/subscriptions/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('PATCH', $path);
+    }
+
 }
