@@ -17,13 +17,25 @@ class PayoutsService
     }
 
     /**
-     * Lancer un virement Wave
+     * Créer un virement
      */
-    public function createWavePayout(): array
+    public function create(): array
     {
-        $path = '/payout/wave';
+        $path = '/payouts';
 
         return $this->client->request('POST', $path);
+    }
+
+
+    /**
+     * Obtenir un virement
+     */
+    public function get(string $id): array
+    {
+        $path = '/payouts/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
 

@@ -7,8 +7,6 @@ namespace Lomi;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Lomi\Services\AccountsService;
-use Lomi\Services\BeneficiaryPayoutsService;
-use Lomi\Services\ChargeService;
 use Lomi\Services\ChargesService;
 use Lomi\Services\CheckoutSessionsService;
 use Lomi\Services\CustomersService;
@@ -16,10 +14,8 @@ use Lomi\Services\CustomerSubscriptionsService;
 use Lomi\Services\DiscountCouponsService;
 use Lomi\Services\MerchantsService;
 use Lomi\Services\OrganizationsService;
-use Lomi\Services\PaymentIntentsService;
 use Lomi\Services\PaymentLinksService;
 use Lomi\Services\PaymentRequestsService;
-use Lomi\Services\PayoutService;
 use Lomi\Services\PayoutsService;
 use Lomi\Services\ProductsService;
 use Lomi\Services\ProvidersService;
@@ -36,8 +32,6 @@ class LomiClient
     private Client $httpClient;
 
     public AccountsService $accounts;
-    public BeneficiaryPayoutsService $beneficiaryPayouts;
-    public ChargeService $charge;
     public ChargesService $charges;
     public CheckoutSessionsService $checkoutSessions;
     public CustomersService $customers;
@@ -45,10 +39,8 @@ class LomiClient
     public DiscountCouponsService $discountCoupons;
     public MerchantsService $merchants;
     public OrganizationsService $organizations;
-    public PaymentIntentsService $paymentIntents;
     public PaymentLinksService $paymentLinks;
     public PaymentRequestsService $paymentRequests;
-    public PayoutService $payout;
     public PayoutsService $payouts;
     public ProductsService $products;
     public ProvidersService $providers;
@@ -76,8 +68,6 @@ class LomiClient
         ]);
 
         $this->accounts = new AccountsService($this);
-        $this->beneficiaryPayouts = new BeneficiaryPayoutsService($this);
-        $this->charge = new ChargeService($this);
         $this->charges = new ChargesService($this);
         $this->checkoutSessions = new CheckoutSessionsService($this);
         $this->customers = new CustomersService($this);
@@ -85,10 +75,8 @@ class LomiClient
         $this->discountCoupons = new DiscountCouponsService($this);
         $this->merchants = new MerchantsService($this);
         $this->organizations = new OrganizationsService($this);
-        $this->paymentIntents = new PaymentIntentsService($this);
         $this->paymentLinks = new PaymentLinksService($this);
         $this->paymentRequests = new PaymentRequestsService($this);
-        $this->payout = new PayoutService($this);
         $this->payouts = new PayoutsService($this);
         $this->products = new ProductsService($this);
         $this->providers = new ProvidersService($this);
