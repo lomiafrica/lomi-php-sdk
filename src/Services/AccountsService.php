@@ -29,18 +29,6 @@ class AccountsService
 
 
     /**
-     * Obtenir un compte par ID
-     */
-    public function get(string $id): array
-    {
-        $path = '/accounts/{id}';
-        $path = str_replace('{id}', $id, $path);
-
-        return $this->client->request('GET', $path);
-    }
-
-
-    /**
      * Solde du compte
      */
     public function getBalance(?array $params = null): array
@@ -59,17 +47,6 @@ class AccountsService
         $path = '/accounts/balance/breakdown';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
-    }
-
-
-    /**
-     * Lister les comptes
-     */
-    public function list(): array
-    {
-        $path = '/accounts';
-
-        return $this->client->request('GET', $path);
     }
 
 }
