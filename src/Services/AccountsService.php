@@ -22,7 +22,7 @@ class AccountsService
     public function checkBalance(string $currency): array
     {
         $path = '/accounts/balance/check/{currency}';
-        $path = str_replace('{currency}', $currency, $path);
+        $path = str_replace('{currency}', rawurlencode($currency), $path);
 
         return $this->client->request('GET', $path);
     }

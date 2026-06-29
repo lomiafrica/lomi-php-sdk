@@ -33,7 +33,7 @@ class CheckoutSessionsService
     public function get(string $id): array
     {
         $path = '/checkout-sessions/{id}';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('GET', $path);
     }

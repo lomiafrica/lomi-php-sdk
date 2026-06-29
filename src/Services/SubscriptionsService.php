@@ -22,7 +22,7 @@ class SubscriptionsService
     public function cancel(string $id, ?array $body = null): array
     {
         $path = '/subscriptions/{id}/cancel';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('POST', $path, ['json' => $body]);
     }
@@ -34,7 +34,7 @@ class SubscriptionsService
     public function findByCustomer(string $customerId): array
     {
         $path = '/subscriptions/customer/{customerId}';
-        $path = str_replace('{customerId}', $customerId, $path);
+        $path = str_replace('{customerId}', rawurlencode($customerId), $path);
 
         return $this->client->request('GET', $path);
     }
@@ -46,7 +46,7 @@ class SubscriptionsService
     public function get(string $id): array
     {
         $path = '/subscriptions/{id}';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('GET', $path);
     }
@@ -69,7 +69,7 @@ class SubscriptionsService
     public function update(string $id): array
     {
         $path = '/subscriptions/{id}';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('PATCH', $path);
     }
