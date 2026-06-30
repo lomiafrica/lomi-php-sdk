@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T10:04:38.598Z",
+  "generatedAt": "2026-06-30T10:27:31.016Z",
   "language": "php",
   "sdk": {
     "accounts": [
@@ -43,6 +43,10 @@
       "list"
     ],
     "disputes": [
+      "get",
+      "list"
+    ],
+    "logs": [
       "get",
       "list"
     ],
