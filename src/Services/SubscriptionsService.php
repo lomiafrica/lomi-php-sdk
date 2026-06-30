@@ -22,7 +22,19 @@ class SubscriptionsService
     public function cancel(string $id, ?array $body = null): array
     {
         $path = '/subscriptions/{id}/cancel';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
+     * Changer le plan tarifaire
+     */
+    public function changePlan(string $id, ?array $body = null): array
+    {
+        $path = '/subscriptions/{id}/change-plan';
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path, ['json' => $body]);
     }
@@ -34,7 +46,7 @@ class SubscriptionsService
     public function findByCustomer(string $customerId): array
     {
         $path = '/subscriptions/customer/{customerId}';
-        $path = str_replace('{customerId}', rawurlencode($customerId), $path);
+        $path = str_replace('{customerId}', $customerId, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -46,7 +58,7 @@ class SubscriptionsService
     public function get(string $id): array
     {
         $path = '/subscriptions/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -64,12 +76,24 @@ class SubscriptionsService
 
 
     /**
+     * Annuler une résiliation planifiée
+     */
+    public function uncancel(string $id): array
+    {
+        $path = '/subscriptions/{id}/uncancel';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path);
+    }
+
+
+    /**
      * Mettre à jour un abonnement
      */
     public function update(string $id): array
     {
         $path = '/subscriptions/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('PATCH', $path);
     }

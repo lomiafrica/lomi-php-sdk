@@ -22,7 +22,7 @@ class WebhookDeliveryLogsService
     public function get(string $id): array
     {
         $path = '/webhook-delivery-logs/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }

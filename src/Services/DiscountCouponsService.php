@@ -33,7 +33,7 @@ class DiscountCouponsService
     public function get(string $id): array
     {
         $path = '/discount-coupons/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -45,7 +45,7 @@ class DiscountCouponsService
     public function getPerformance(string $id): array
     {
         $path = '/discount-coupons/{id}/performance';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }

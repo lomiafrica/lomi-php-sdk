@@ -19,11 +19,11 @@ class RefundsService
     /**
      * Créer un remboursement
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/refunds';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -33,7 +33,7 @@ class RefundsService
     public function get(string $id): array
     {
         $path = '/refunds/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }

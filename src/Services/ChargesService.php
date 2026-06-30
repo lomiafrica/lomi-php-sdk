@@ -17,19 +17,19 @@ class ChargesService
     }
 
     /**
-     * Annuler un encaissement carte
+     * Cancel card charge
      */
     public function cancelCardCharge(string $id): array
     {
         $path = '/charge/card/{id}/cancel';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path);
     }
 
 
     /**
-     * Créer un encaissement carte (client_secret)
+     * Create card charge (client_secret)
      */
     public function createCardCharge(?array $body = null): array
     {
@@ -40,34 +40,45 @@ class ChargesService
 
 
     /**
-     * Lancer un encaissement direct MTN MoMo
+     * Create MTN MoMo charge
      */
-    public function createMtnCharge(): array
+    public function createMtnCharge(?array $body = null): array
     {
         $path = '/charge/mtn';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
     /**
-     * Lancer un encaissement direct Wave
+     * Create Switch charge (server-side card authorization)
      */
-    public function createWaveCharge(): array
+    public function createSwitchCharge(?array $body = null): array
+    {
+        $path = '/charge/switch';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
+     * Create direct Wave charge
+     */
+    public function createWaveCharge(?array $body = null): array
     {
         $path = '/charge/wave';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
     /**
-     * Obtenir un encaissement carte
+     * Retrieve card charge
      */
     public function getCardCharge(string $id): array
     {
         $path = '/charge/card/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }

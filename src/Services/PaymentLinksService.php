@@ -33,7 +33,7 @@ class PaymentLinksService
     public function get(string $id): array
     {
         $path = '/payment-links/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }

@@ -22,7 +22,7 @@ class ProductsService
     public function addPrice(string $id): array
     {
         $path = '/products/{id}/prices';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path);
     }
@@ -45,7 +45,7 @@ class ProductsService
     public function get(string $id): array
     {
         $path = '/products/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -68,8 +68,8 @@ class ProductsService
     public function setDefaultPrice(string $id, string $priceId): array
     {
         $path = '/products/{id}/prices/{priceId}/set-default';
-        $path = str_replace('{id}', rawurlencode($id), $path);
-        $path = str_replace('{priceId}', rawurlencode($priceId), $path);
+        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{priceId}', $priceId, $path);
 
         return $this->client->request('POST', $path);
     }

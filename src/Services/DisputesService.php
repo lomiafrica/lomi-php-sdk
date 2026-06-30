@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (PayoutsService)
+ * Public merchant API (DisputesService)
  */
-class PayoutsService
+class DisputesService
 {
     private LomiClient $client;
 
@@ -17,22 +17,11 @@ class PayoutsService
     }
 
     /**
-     * Créer un virement
-     */
-    public function create(): array
-    {
-        $path = '/payouts';
-
-        return $this->client->request('POST', $path);
-    }
-
-
-    /**
-     * Obtenir un virement
+     * Obtenir un litige
      */
     public function get(string $id): array
     {
-        $path = '/payouts/{id}';
+        $path = '/disputes/{id}';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -40,11 +29,11 @@ class PayoutsService
 
 
     /**
-     * Lister les virements
+     * Lister les litiges
      */
     public function list(?array $params = null): array
     {
-        $path = '/payouts';
+        $path = '/disputes';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }

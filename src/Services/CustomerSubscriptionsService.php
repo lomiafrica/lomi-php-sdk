@@ -22,7 +22,7 @@ class CustomerSubscriptionsService
     public function delete(string $subscription_id): array
     {
         $path = '/customer-subscriptions/{subscription_id}';
-        $path = str_replace('{subscription_id}', rawurlencode($subscription_id), $path);
+        $path = str_replace('{subscription_id}', $subscription_id, $path);
 
         return $this->client->request('DELETE', $path);
     }
@@ -34,7 +34,7 @@ class CustomerSubscriptionsService
     public function get(string $subscription_id): array
     {
         $path = '/customer-subscriptions/{subscription_id}';
-        $path = str_replace('{subscription_id}', rawurlencode($subscription_id), $path);
+        $path = str_replace('{subscription_id}', $subscription_id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -57,7 +57,7 @@ class CustomerSubscriptionsService
     public function update(string $subscription_id): array
     {
         $path = '/customer-subscriptions/{subscription_id}';
-        $path = str_replace('{subscription_id}', rawurlencode($subscription_id), $path);
+        $path = str_replace('{subscription_id}', $subscription_id, $path);
 
         return $this->client->request('PATCH', $path);
     }

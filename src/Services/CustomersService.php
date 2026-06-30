@@ -33,7 +33,7 @@ class CustomersService
     public function createPortalLaunchSession(string $id, ?array $body = null): array
     {
         $path = '/customers/{id}/portal-launch-session';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path, ['json' => $body]);
     }
@@ -45,7 +45,7 @@ class CustomersService
     public function delete(string $id): array
     {
         $path = '/customers/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('DELETE', $path);
     }
@@ -57,7 +57,7 @@ class CustomersService
     public function get(string $id): array
     {
         $path = '/customers/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -69,7 +69,7 @@ class CustomersService
     public function getPortalAudit(string $id, ?array $params = null): array
     {
         $path = '/customers/{id}/portal-audit';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
@@ -81,7 +81,7 @@ class CustomersService
     public function getTransactions(string $id): array
     {
         $path = '/customers/{id}/transactions';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -104,7 +104,7 @@ class CustomersService
     public function update(string $id, ?array $body = null): array
     {
         $path = '/customers/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('PATCH', $path, ['json' => $body]);
     }

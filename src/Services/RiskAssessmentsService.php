@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (TransactionsService)
+ * Public merchant API (RiskAssessmentsService)
  */
-class TransactionsService
+class RiskAssessmentsService
 {
     private LomiClient $client;
 
@@ -17,11 +17,11 @@ class TransactionsService
     }
 
     /**
-     * Obtenir une transaction par ID
+     * Get a risk assessment
      */
-    public function get(string $id): array
+    public function findOne(string $id): array
     {
-        $path = '/transactions/{id}';
+        $path = '/risk-assessments/{id}';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -29,11 +29,11 @@ class TransactionsService
 
 
     /**
-     * Lister les transactions
+     * List payment risk assessments
      */
-    public function list(?array $params = null): array
+    public function listAssessments(?array $params = null): array
     {
-        $path = '/transactions';
+        $path = '/risk-assessments';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }

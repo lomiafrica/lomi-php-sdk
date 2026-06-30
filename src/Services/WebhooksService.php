@@ -33,7 +33,7 @@ class WebhooksService
     public function delete(string $id): array
     {
         $path = '/webhooks/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('DELETE', $path);
     }
@@ -45,7 +45,7 @@ class WebhooksService
     public function get(string $id): array
     {
         $path = '/webhooks/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -68,8 +68,8 @@ class WebhooksService
     public function retryDelivery(string $webhookId, string $logId): array
     {
         $path = '/webhooks/{webhookId}/logs/{logId}/retry';
-        $path = str_replace('{webhookId}', rawurlencode($webhookId), $path);
-        $path = str_replace('{logId}', rawurlencode($logId), $path);
+        $path = str_replace('{webhookId}', $webhookId, $path);
+        $path = str_replace('{logId}', $logId, $path);
 
         return $this->client->request('POST', $path);
     }
@@ -81,7 +81,7 @@ class WebhooksService
     public function test(string $id): array
     {
         $path = '/webhooks/{id}/test';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path);
     }
@@ -93,7 +93,7 @@ class WebhooksService
     public function update(string $id, ?array $body = null): array
     {
         $path = '/webhooks/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('PATCH', $path, ['json' => $body]);
     }

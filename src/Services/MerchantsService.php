@@ -22,7 +22,7 @@ class MerchantsService
     public function get(string $id): array
     {
         $path = '/merchants/{id}';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -34,7 +34,7 @@ class MerchantsService
     public function getArr(string $id): array
     {
         $path = '/merchants/{id}/arr';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
@@ -46,7 +46,7 @@ class MerchantsService
     public function getBalance(string $id, ?array $params = null): array
     {
         $path = '/merchants/{id}/balance';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
@@ -58,7 +58,7 @@ class MerchantsService
     public function getMrr(string $id): array
     {
         $path = '/merchants/{id}/mrr';
-        $path = str_replace('{id}', rawurlencode($id), $path);
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
