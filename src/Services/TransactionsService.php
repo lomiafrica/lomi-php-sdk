@@ -22,7 +22,7 @@ class TransactionsService
     public function get(string $id): array
     {
         $path = '/transactions/{id}';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('GET', $path);
     }

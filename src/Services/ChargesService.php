@@ -22,7 +22,7 @@ class ChargesService
     public function cancelCardCharge(string $id): array
     {
         $path = '/charge/card/{id}/cancel';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('POST', $path);
     }
@@ -67,7 +67,7 @@ class ChargesService
     public function getCardCharge(string $id): array
     {
         $path = '/charge/card/{id}';
-        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{id}', rawurlencode($id), $path);
 
         return $this->client->request('GET', $path);
     }
