@@ -10,7 +10,6 @@ use Lomi\Services\AccountsService;
 use Lomi\Services\ChargesService;
 use Lomi\Services\CheckoutSessionsService;
 use Lomi\Services\CustomersService;
-use Lomi\Services\CustomerSubscriptionsService;
 use Lomi\Services\DiscountCouponsService;
 use Lomi\Services\DisputesService;
 use Lomi\Services\LogsService;
@@ -44,7 +43,6 @@ class LomiClient
     public ChargesService $charges;
     public CheckoutSessionsService $checkoutSessions;
     public CustomersService $customers;
-    public CustomerSubscriptionsService $customerSubscriptions;
     public DiscountCouponsService $discountCoupons;
     public DisputesService $disputes;
     public LogsService $logs;
@@ -89,7 +87,6 @@ class LomiClient
         $this->charges = new ChargesService($this);
         $this->checkoutSessions = new CheckoutSessionsService($this);
         $this->customers = new CustomersService($this);
-        $this->customerSubscriptions = new CustomerSubscriptionsService($this);
         $this->discountCoupons = new DiscountCouponsService($this);
         $this->disputes = new DisputesService($this);
         $this->logs = new LogsService($this);
