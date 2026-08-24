@@ -40,7 +40,7 @@ class ChargesService
 
 
     /**
-     * Create MTN MoMo charge
+     * Create MTN charge
      */
     public function createMtnCharge(?array $body = null): array
     {
