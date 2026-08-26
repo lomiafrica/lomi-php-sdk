@@ -30,9 +30,9 @@ class CustomersService
     /**
      * Créer une session de lancement du portail client
      */
-    public function createPortalLaunchSession(string $id, ?array $body = null): array
+    public function createPortalSession(string $id, ?array $body = null): array
     {
-        $path = '/customers/{id}/portal-launch-session';
+        $path = '/customers/{id}/portal';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path, ['json' => $body]);
@@ -72,6 +72,18 @@ class CustomersService
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Abonnements d’un client
+     */
+    public function getSubscriptions(string $id): array
+    {
+        $path = '/customers/{id}/subscriptions';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
 

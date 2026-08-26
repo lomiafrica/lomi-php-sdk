@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (DiscountCouponsService)
+ * Public merchant API (CouponsService)
  */
-class DiscountCouponsService
+class CouponsService
 {
     private LomiClient $client;
 
@@ -21,7 +21,7 @@ class DiscountCouponsService
      */
     public function create(): array
     {
-        $path = '/discount-coupons';
+        $path = '/coupons';
 
         return $this->client->request('POST', $path);
     }
@@ -32,7 +32,7 @@ class DiscountCouponsService
      */
     public function get(string $id): array
     {
-        $path = '/discount-coupons/{id}';
+        $path = '/coupons/{id}';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -44,7 +44,7 @@ class DiscountCouponsService
      */
     public function getPerformance(string $id): array
     {
-        $path = '/discount-coupons/{id}/performance';
+        $path = '/coupons/{id}/performance';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -56,7 +56,7 @@ class DiscountCouponsService
      */
     public function list(): array
     {
-        $path = '/discount-coupons';
+        $path = '/coupons';
 
         return $this->client->request('GET', $path);
     }

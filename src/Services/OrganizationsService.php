@@ -40,6 +40,17 @@ class OrganizationsService
 
 
     /**
+     * Get Radar settings for the organization
+     */
+    public function getRadarSettings(): array
+    {
+        $path = '/organizations/radar-settings';
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
      * Détails de l\'organisation
      */
     public function list(): array
@@ -47,6 +58,17 @@ class OrganizationsService
         $path = '/organizations';
 
         return $this->client->request('GET', $path);
+    }
+
+
+    /**
+     * Update Radar settings
+     */
+    public function updateRadarSettings(?array $body = null): array
+    {
+        $path = '/organizations/radar-settings';
+
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }

@@ -9,13 +9,12 @@ use GuzzleHttp\Exception\RequestException;
 use Lomi\Services\AccountsService;
 use Lomi\Services\ChargesService;
 use Lomi\Services\CheckoutSessionsService;
+use Lomi\Services\CouponsService;
 use Lomi\Services\CustomersService;
-use Lomi\Services\DiscountCouponsService;
 use Lomi\Services\DisputesService;
 use Lomi\Services\LogsService;
 use Lomi\Services\MerchantsService;
 use Lomi\Services\MetersService;
-use Lomi\Services\OrganizationService;
 use Lomi\Services\OrganizationsService;
 use Lomi\Services\PaymentLinksService;
 use Lomi\Services\PaymentRequestsService;
@@ -27,10 +26,7 @@ use Lomi\Services\RiskAssessmentsService;
 use Lomi\Services\SettlementsService;
 use Lomi\Services\SubscriptionsService;
 use Lomi\Services\TransactionsService;
-use Lomi\Services\UsageBillingService;
-use Lomi\Services\UsageEventsService;
-use Lomi\Services\UsageSubscriptionsService;
-use Lomi\Services\WebhookDeliveryLogsService;
+use Lomi\Services\UsageService;
 use Lomi\Services\WebhooksService;
 
 class LomiClient
@@ -42,13 +38,12 @@ class LomiClient
     public AccountsService $accounts;
     public ChargesService $charges;
     public CheckoutSessionsService $checkoutSessions;
+    public CouponsService $coupons;
     public CustomersService $customers;
-    public DiscountCouponsService $discountCoupons;
     public DisputesService $disputes;
     public LogsService $logs;
     public MerchantsService $merchants;
     public MetersService $meters;
-    public OrganizationService $organization;
     public OrganizationsService $organizations;
     public PaymentLinksService $paymentLinks;
     public PaymentRequestsService $paymentRequests;
@@ -60,10 +55,7 @@ class LomiClient
     public SettlementsService $settlements;
     public SubscriptionsService $subscriptions;
     public TransactionsService $transactions;
-    public UsageBillingService $usageBilling;
-    public UsageEventsService $usageEvents;
-    public UsageSubscriptionsService $usageSubscriptions;
-    public WebhookDeliveryLogsService $webhookDeliveryLogs;
+    public UsageService $usage;
     public WebhooksService $webhooks;
 
     public function __construct(string $apiKey, array $options = [])
@@ -86,13 +78,12 @@ class LomiClient
         $this->accounts = new AccountsService($this);
         $this->charges = new ChargesService($this);
         $this->checkoutSessions = new CheckoutSessionsService($this);
+        $this->coupons = new CouponsService($this);
         $this->customers = new CustomersService($this);
-        $this->discountCoupons = new DiscountCouponsService($this);
         $this->disputes = new DisputesService($this);
         $this->logs = new LogsService($this);
         $this->merchants = new MerchantsService($this);
         $this->meters = new MetersService($this);
-        $this->organization = new OrganizationService($this);
         $this->organizations = new OrganizationsService($this);
         $this->paymentLinks = new PaymentLinksService($this);
         $this->paymentRequests = new PaymentRequestsService($this);
@@ -104,10 +95,7 @@ class LomiClient
         $this->settlements = new SettlementsService($this);
         $this->subscriptions = new SubscriptionsService($this);
         $this->transactions = new TransactionsService($this);
-        $this->usageBilling = new UsageBillingService($this);
-        $this->usageEvents = new UsageEventsService($this);
-        $this->usageSubscriptions = new UsageSubscriptionsService($this);
-        $this->webhookDeliveryLogs = new WebhookDeliveryLogsService($this);
+        $this->usage = new UsageService($this);
         $this->webhooks = new WebhooksService($this);
 
     }

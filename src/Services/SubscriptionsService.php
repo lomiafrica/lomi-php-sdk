@@ -41,23 +41,23 @@ class SubscriptionsService
 
 
     /**
-     * Abonnements d’un client
+     * Obtenir un abonnement par ID
      */
-    public function findByCustomer(string $customerId): array
+    public function get(string $id): array
     {
-        $path = '/subscriptions/customer/{customerId}';
-        $path = str_replace('{customerId}', $customerId, $path);
+        $path = '/subscriptions/{id}';
+        $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
     }
 
 
     /**
-     * Obtenir un abonnement par ID
+     * Get meter usage for a subscription
      */
-    public function get(string $id): array
+    public function getUsage(string $id): array
     {
-        $path = '/subscriptions/{id}';
+        $path = '/subscriptions/{id}/usage';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -78,9 +78,9 @@ class SubscriptionsService
     /**
      * Annuler une résiliation planifiée
      */
-    public function uncancel(string $id): array
+    public function resume(string $id): array
     {
-        $path = '/subscriptions/{id}/uncancel';
+        $path = '/subscriptions/{id}/resume';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('POST', $path);

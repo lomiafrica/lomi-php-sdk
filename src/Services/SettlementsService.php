@@ -17,6 +17,17 @@ class SettlementsService
     }
 
     /**
+     * Request an instant settlement (Nitro)
+     */
+    public function createInstant(?array $body = null): array
+    {
+        $path = '/settlements/instant';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
      * List settlement periods
      */
     public function findAll(?array $params = null): array
@@ -36,6 +47,18 @@ class SettlementsService
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Get an instant settlement (Nitro request)
+     */
+    public function getInstant(string $id): array
+    {
+        $path = '/settlements/instant/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
     }
 
 }

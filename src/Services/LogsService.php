@@ -19,13 +19,12 @@ class LogsService
     /**
      * Get a log entry
      */
-    public function get(string $type, string $id): array
+    public function get(string $id, ?array $params = null): array
     {
-        $path = '/logs/{type}/{id}';
-        $path = str_replace('{type}', $type, $path);
+        $path = '/logs/{id}';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('GET', $path);
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
 

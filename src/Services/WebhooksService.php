@@ -52,6 +52,18 @@ class WebhooksService
 
 
     /**
+     * Obtenir un journal de livraison par ID
+     */
+    public function getDelivery(string $id): array
+    {
+        $path = '/webhooks/deliveries/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
+
+    /**
      * Lister les webhooks
      */
     public function list(): array
@@ -63,13 +75,24 @@ class WebhooksService
 
 
     /**
+     * Lister les journaux de livraison
+     */
+    public function listDeliveries(?array $params = null): array
+    {
+        $path = '/webhooks/deliveries';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
      * Relancer une livraison webhook
      */
-    public function retryDelivery(string $webhookId, string $logId): array
+    public function retryDelivery(string $id, string $deliveryId): array
     {
-        $path = '/webhooks/{webhookId}/logs/{logId}/retry';
-        $path = str_replace('{webhookId}', $webhookId, $path);
-        $path = str_replace('{logId}', $logId, $path);
+        $path = '/webhooks/{id}/deliveries/{deliveryId}/retry';
+        $path = str_replace('{id}', $id, $path);
+        $path = str_replace('{deliveryId}', $deliveryId, $path);
 
         return $this->client->request('POST', $path);
     }

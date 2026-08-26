@@ -67,7 +67,7 @@ class ProductsService
      */
     public function setDefaultPrice(string $id, string $priceId): array
     {
-        $path = '/products/{id}/prices/{priceId}/set-default';
+        $path = '/products/{id}/prices/{priceId}/default';
         $path = str_replace('{id}', $id, $path);
         $path = str_replace('{priceId}', $priceId, $path);
 
