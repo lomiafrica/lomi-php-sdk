@@ -29,6 +29,18 @@ class ProductsService
 
 
     /**
+     * Archiver un produit
+     */
+    public function archive(string $id): array
+    {
+        $path = '/products/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('DELETE', $path);
+    }
+
+
+    /**
      * Créer un produit
      */
     public function create(): array
@@ -72,6 +84,18 @@ class ProductsService
         $path = str_replace('{priceId}', $priceId, $path);
 
         return $this->client->request('POST', $path);
+    }
+
+
+    /**
+     * Mettre à jour un produit
+     */
+    public function update(string $id): array
+    {
+        $path = '/products/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('PATCH', $path);
     }
 
 }

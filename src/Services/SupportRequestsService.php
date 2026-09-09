@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (PaymentLinksService)
+ * Public merchant API (SupportRequestsService)
  */
-class PaymentLinksService
+class SupportRequestsService
 {
     private LomiClient $client;
 
@@ -17,34 +17,34 @@ class PaymentLinksService
     }
 
     /**
-     * Archiver un lien de paiement
+     * Fermer une demande d\'assistance
      */
-    public function archive(string $id): array
+    public function close(string $id): array
     {
-        $path = '/payment-links/{id}';
+        $path = '/support-requests/{id}/close';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('DELETE', $path);
+        return $this->client->request('POST', $path);
     }
 
 
     /**
-     * Créer un lien de paiement
+     * Créer une demande d\'assistance
      */
     public function create(?array $body = null): array
     {
-        $path = '/payment-links';
+        $path = '/support-requests';
 
         return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
     /**
-     * Obtenir un lien de paiement par ID
+     * Obtenir une demande d\'assistance
      */
     public function get(string $id): array
     {
-        $path = '/payment-links/{id}';
+        $path = '/support-requests/{id}';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -52,25 +52,13 @@ class PaymentLinksService
 
 
     /**
-     * Lister les liens de paiement
+     * Lister les demandes d\'assistance
      */
     public function list(?array $params = null): array
     {
-        $path = '/payment-links';
+        $path = '/support-requests';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
-    }
-
-
-    /**
-     * Mettre à jour un lien de paiement
-     */
-    public function update(string $id, ?array $body = null): array
-    {
-        $path = '/payment-links/{id}';
-        $path = str_replace('{id}', $id, $path);
-
-        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }

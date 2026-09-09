@@ -17,6 +17,29 @@ class OrganizationsService
     }
 
     /**
+     * Créer une organisation
+     */
+    public function create(?array $body = null): array
+    {
+        $path = '/organizations';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
+     * Créer une clé secrète pour une organisation
+     */
+    public function createKey(string $id, ?array $body = null): array
+    {
+        $path = '/organizations/{id}/keys';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
      * Organisation par ID
      */
     public function get(string $id): array

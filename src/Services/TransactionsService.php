@@ -38,4 +38,16 @@ class TransactionsService
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
+
+    /**
+     * Download receipt PDF
+     */
+    public function receiptPdf(string $id): array
+    {
+        $path = '/transactions/{id}/receipt.pdf';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('GET', $path);
+    }
+
 }

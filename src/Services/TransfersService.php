@@ -5,9 +5,9 @@ namespace Lomi\Services;
 use Lomi\LomiClient;
 
 /**
- * Public merchant API (PaymentLinksService)
+ * Public merchant API (TransfersService)
  */
-class PaymentLinksService
+class TransfersService
 {
     private LomiClient $client;
 
@@ -17,34 +17,22 @@ class PaymentLinksService
     }
 
     /**
-     * Archiver un lien de paiement
-     */
-    public function archive(string $id): array
-    {
-        $path = '/payment-links/{id}';
-        $path = str_replace('{id}', $id, $path);
-
-        return $this->client->request('DELETE', $path);
-    }
-
-
-    /**
-     * Créer un lien de paiement
+     * Create a transfer to a Member Account
      */
     public function create(?array $body = null): array
     {
-        $path = '/payment-links';
+        $path = '/transfers';
 
         return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
     /**
-     * Obtenir un lien de paiement par ID
+     * Retrieve a transfer
      */
     public function get(string $id): array
     {
-        $path = '/payment-links/{id}';
+        $path = '/transfers/{id}';
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('GET', $path);
@@ -52,25 +40,25 @@ class PaymentLinksService
 
 
     /**
-     * Lister les liens de paiement
+     * List transfers
      */
     public function list(?array $params = null): array
     {
-        $path = '/payment-links';
+        $path = '/transfers';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
 
     /**
-     * Mettre à jour un lien de paiement
+     * Reverse a transfer
      */
-    public function update(string $id, ?array $body = null): array
+    public function reverse(string $id, ?array $body = null): array
     {
-        $path = '/payment-links/{id}';
+        $path = '/transfers/{id}/reversals';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('PATCH', $path, ['json' => $body]);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 }

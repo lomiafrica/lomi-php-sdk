@@ -38,4 +38,16 @@ class DisputesService
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
     }
 
+
+    /**
+     * Submit dispute evidence
+     */
+    public function submitEvidence(string $id): array
+    {
+        $path = '/disputes/{id}/evidence';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path);
+    }
+
 }

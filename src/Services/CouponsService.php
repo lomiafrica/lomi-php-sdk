@@ -28,6 +28,18 @@ class CouponsService
 
 
     /**
+     * Supprimer un coupon
+     */
+    public function delete(string $id): array
+    {
+        $path = '/coupons/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('DELETE', $path);
+    }
+
+
+    /**
      * Obtenir un coupon par ID
      */
     public function get(string $id): array
