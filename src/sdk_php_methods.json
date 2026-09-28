@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T13:35:54.041Z",
+  "generatedAt": "2026-09-28T19:28:41.224Z",
   "language": "php",
   "sdk": {
     "account": [
@@ -19,6 +19,7 @@
     ],
     "charges": [
       "cancelCardCharge",
+      "captureCardCharge",
       "createCardCharge",
       "createMtnCharge",
       "createSwitchCharge",
@@ -40,6 +41,7 @@
       "listAll"
     ],
     "customers": [
+      "block",
       "create",
       "createPortalSession",
       "delete",
@@ -49,6 +51,8 @@
       "getTransactions",
       "list",
       "listAll",
+      "topBySpend",
+      "unblock",
       "update"
     ],
     "disputes": [
@@ -148,7 +152,8 @@
       "list",
       "listAll",
       "setDefaultPrice",
-      "update"
+      "update",
+      "updatePricesBatch"
     ],
     "providers": [
       "list",

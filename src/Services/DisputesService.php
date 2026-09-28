@@ -42,12 +42,12 @@ class DisputesService
     /**
      * Submit dispute evidence
      */
-    public function submitEvidence(string $id): array
+    public function submitEvidence(string $id, ?array $body = null): array
     {
         $path = '/disputes/{id}/evidence';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 }

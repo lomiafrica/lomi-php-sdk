@@ -41,22 +41,22 @@ class UsageService
     /**
      * Create or update a plan entitlement feature
      */
-    public function createEntitlement(): array
+    public function createEntitlement(?array $body = null): array
     {
         $path = '/usage/entitlements';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
     /**
      * Create a usage subscription
      */
-    public function createSubscription(): array
+    public function createSubscription(?array $body = null): array
     {
         $path = '/usage/subscriptions';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -86,11 +86,11 @@ class UsageService
     /**
      * Credit prepaid usage units to a customer meter wallet
      */
-    public function grantCredits(): array
+    public function grantCredits(?array $body = null): array
     {
         $path = '/usage/credits';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 

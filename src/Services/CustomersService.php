@@ -17,6 +17,18 @@ class CustomersService
     }
 
     /**
+     * Bloquer un client
+     */
+    public function block(string $id): array
+    {
+        $path = '/customers/{id}/block';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path);
+    }
+
+
+    /**
      * Créer un client
      */
     public function create(?array $body = null): array
@@ -107,6 +119,29 @@ class CustomersService
         $path = '/customers';
 
         return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Clients par volume
+     */
+    public function topBySpend(?array $params = null): array
+    {
+        $path = '/customers/top';
+
+        return $this->client->request('GET', $path, ['query' => $params ?? []]);
+    }
+
+
+    /**
+     * Débloquer un client
+     */
+    public function unblock(string $id): array
+    {
+        $path = '/customers/{id}/unblock';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path);
     }
 
 

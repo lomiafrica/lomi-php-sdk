@@ -29,6 +29,18 @@ class ChargesService
 
 
     /**
+     * Capture card hold
+     */
+    public function captureCardCharge(string $id, ?array $body = null): array
+    {
+        $path = '/charge/card/{id}/capture';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
+
+    /**
      * Create card charge (client_secret)
      */
     public function createCardCharge(?array $body = null): array

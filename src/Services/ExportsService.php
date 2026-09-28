@@ -19,11 +19,11 @@ class ExportsService
     /**
      * Create an export job
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/exports';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 

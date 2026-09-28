@@ -19,11 +19,11 @@ class PayoutMethodsService
     /**
      * Add a payout method
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/payout-methods';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 

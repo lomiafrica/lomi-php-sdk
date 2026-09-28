@@ -19,11 +19,11 @@ class CouponsService
     /**
      * Créer un coupon
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/coupons';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 

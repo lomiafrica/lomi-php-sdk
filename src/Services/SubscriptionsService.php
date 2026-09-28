@@ -90,12 +90,12 @@ class SubscriptionsService
     /**
      * Mettre à jour un abonnement
      */
-    public function update(string $id): array
+    public function update(string $id, ?array $body = null): array
     {
         $path = '/subscriptions/{id}';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('PATCH', $path);
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }

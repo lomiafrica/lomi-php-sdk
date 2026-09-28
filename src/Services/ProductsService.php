@@ -19,12 +19,12 @@ class ProductsService
     /**
      * Ajouter un prix à un produit
      */
-    public function addPrice(string $id): array
+    public function addPrice(string $id, ?array $body = null): array
     {
         $path = '/products/{id}/prices';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -43,11 +43,11 @@ class ProductsService
     /**
      * Créer un produit
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/products';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -90,12 +90,23 @@ class ProductsService
     /**
      * Mettre à jour un produit
      */
-    public function update(string $id): array
+    public function update(string $id, ?array $body = null): array
     {
         $path = '/products/{id}';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('PATCH', $path);
+        return $this->client->request('PATCH', $path, ['json' => $body]);
+    }
+
+
+    /**
+     * Update several product prices
+     */
+    public function updatePricesBatch(?array $body = null): array
+    {
+        $path = '/products/prices/batch';
+
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 }

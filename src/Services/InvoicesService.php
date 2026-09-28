@@ -19,11 +19,11 @@ class InvoicesService
     /**
      * Créer une facture
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/invoices';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -113,12 +113,12 @@ class InvoicesService
     /**
      * Modifier une facture
      */
-    public function update(string $id): array
+    public function update(string $id, ?array $body = null): array
     {
         $path = '/invoices/{id}';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('PATCH', $path);
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 

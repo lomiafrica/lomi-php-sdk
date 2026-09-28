@@ -19,11 +19,11 @@ class MetersService
     /**
      * Create a meter
      */
-    public function create(): array
+    public function create(?array $body = null): array
     {
         $path = '/meters';
 
-        return $this->client->request('POST', $path);
+        return $this->client->request('POST', $path, ['json' => $body]);
     }
 
 
@@ -66,12 +66,12 @@ class MetersService
     /**
      * Update a meter
      */
-    public function update(string $id): array
+    public function update(string $id, ?array $body = null): array
     {
         $path = '/meters/{id}';
         $path = str_replace('{id}', $id, $path);
 
-        return $this->client->request('PATCH', $path);
+        return $this->client->request('PATCH', $path, ['json' => $body]);
     }
 
 }
