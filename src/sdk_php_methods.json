@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T19:28:41.224Z",
+  "generatedAt": "2026-09-30T14:06:37.280Z",
   "language": "php",
   "sdk": {
     "account": [
@@ -24,7 +24,8 @@
       "createMtnCharge",
       "createSwitchCharge",
       "createWaveCharge",
-      "getCardCharge"
+      "getCardCharge",
+      "incrementCardHold"
     ],
     "checkoutSessions": [
       "create",

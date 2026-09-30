@@ -95,4 +95,16 @@ class ChargesService
         return $this->client->request('GET', $path);
     }
 
+
+    /**
+     * Raise card hold
+     */
+    public function incrementCardHold(string $id, ?array $body = null): array
+    {
+        $path = '/charge/card/{id}/increment';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('POST', $path, ['json' => $body]);
+    }
+
 }

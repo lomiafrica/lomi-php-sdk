@@ -17,7 +17,7 @@ class CustomersService
     }
 
     /**
-     * Bloquer un client
+     * Block a customer
      */
     public function block(string $id): array
     {
@@ -134,7 +134,7 @@ class CustomersService
 
 
     /**
-     * Débloquer un client
+     * Unblock a customer
      */
     public function unblock(string $id): array
     {
