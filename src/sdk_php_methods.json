@@ -229,7 +229,6 @@
       "createSubscription",
       "get",
       "getRevenue",
-      "grantCredits",
       "list",
       "listAll",
       "listPeriods"

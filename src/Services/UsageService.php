@@ -84,17 +84,6 @@ class UsageService
 
 
     /**
-     * Credit prepaid usage units to a customer meter wallet
-     */
-    public function grantCredits(?array $body = null): array
-    {
-        $path = '/usage/credits';
-
-        return $this->client->request('POST', $path, ['json' => $body]);
-    }
-
-
-    /**
      * List usage events
      */
     public function list(?array $params = null): array
