@@ -85,6 +85,18 @@ class OrganizationsService
 
 
     /**
+     * Set the support email
+     */
+    public function update(string $id, ?array $body = null): array
+    {
+        $path = '/organizations/{id}';
+        $path = str_replace('{id}', $id, $path);
+
+        return $this->client->request('PATCH', $path, ['json' => $body]);
+    }
+
+
+    /**
      * Update Radar settings
      */
     public function updateRadarSettings(?array $body = null): array

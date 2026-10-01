@@ -118,6 +118,7 @@
       "getRadarSettings",
       "list",
       "listAll",
+      "update",
       "updateRadarSettings"
     ],
     "paymentLinks": [
