@@ -41,6 +41,18 @@ $session = $lomi->checkoutSessions->create([
 header('Location: ' . $session['checkout_url']);
 ```
 
+Check a webhook with the raw body and `X-Lomi-Signature` before you fulfill the order. The secret is the webhook signing secret, not the API key.
+
+```php
+$raw = file_get_contents('php://input');
+$signature = $_SERVER['HTTP_X_LOMI_SIGNATURE'] ?? '';
+$ok = $lomi->webhooks->verifySignature($raw, $signature, getenv('LOMI_WEBHOOK_SECRET'));
+if (!$ok) {
+    http_response_code(400);
+    exit;
+}
+```
+
 Calls return arrays. Errors throw `\Lomi\LomiException`.
 
 Docs: https://docs.lomi.africa/build/sdks/php

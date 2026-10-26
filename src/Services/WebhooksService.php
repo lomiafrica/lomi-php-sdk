@@ -3,6 +3,7 @@
 namespace Lomi\Services;
 
 use Lomi\LomiClient;
+use Lomi\WebhookVerify;
 
 /**
  * Public merchant API (WebhooksService)
@@ -119,6 +120,14 @@ class WebhooksService
         $path = str_replace('{id}', $id, $path);
 
         return $this->client->request('PATCH', $path, ['json' => $body]);
+    }
+
+    /**
+     * Check the raw body against X-Lomi-Signature.
+     */
+    public function verifySignature(string $payload, string $signature, string $secret): bool
+    {
+        return WebhookVerify::verify($payload, $signature, $secret);
     }
 
 }

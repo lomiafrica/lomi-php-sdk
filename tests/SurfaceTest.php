@@ -14,4 +14,17 @@ class SurfaceTest extends TestCase
         $this->assertTrue(property_exists($c, 'charges'));
         $this->assertTrue(property_exists($c, 'payouts'));
     }
+
+    public function testWebhookSignature(): void
+    {
+        $secret = 'whsec';
+        $payload = '{"type":"payment.completed"}';
+        $signature = hash_hmac('sha256', $payload, $secret);
+        $client = new LomiClient('test');
+
+        $this->assertTrue($client->webhooks->verifySignature($payload, $signature, $secret));
+        $this->assertTrue($client->webhooks->verifySignature($payload, 'sha256=' . $signature, $secret));
+        $this->assertFalse($client->webhooks->verifySignature($payload, 'nope', $secret));
+        $this->assertFalse($client->webhooks->verifySignature($payload, $signature, ''));
+    }
 }
