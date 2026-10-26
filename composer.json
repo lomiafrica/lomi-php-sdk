@@ -10,12 +10,13 @@
         "rest",
         "api"
     ],
-    "homepage": "https://openapi-generator.tech",
+    "homepage": "https://docs.lomi.africa/build/sdks/php",
     "license": "unlicense",
     "authors": [
         {
-            "name": "OpenAPI",
-            "homepage": "https://openapi-generator.tech"
+            "name": "lomi.",
+            "email": "hello@lomi.africa",
+            "homepage": "https://lomi.africa"
         }
     ],
     "require": {
@@ -31,9 +32,13 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "LomiSDK\\" : "lib/" }
+        "psr-4": {
+            "Lomi\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "LomiSDK\\Test\\" : "test/" }
+        "psr-4": {
+            "Lomi\\Tests\\": "tests/"
+        }
     }
 }
